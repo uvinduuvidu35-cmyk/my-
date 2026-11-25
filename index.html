@@ -2468,9 +2468,14 @@
         <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body">
-        <div class="modal-banner-box">
-          <span class="badge-tag">GAMING M4K · 100% VERIFIED</span>
-          <h4 id="modalBannerTitle">PREMIUM FREE FIRE ACCOUNT</h4>
+        <!-- Account Image & Banner Box -->
+        <div id="modalImgWrap" style="width: 100%; height: 210px; border-radius: 12px; overflow: hidden; position: relative; margin-bottom: 16px; background: var(--grad-card-header); border: 1px solid rgba(56, 189, 248, 0.3);">
+          <img id="modalAccountImg" src="" alt="Account Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+          <div id="modalBannerFallback" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+            <span class="badge-tag" style="display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; background: rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.5); color: #bae6fd; padding: 4px 12px; border-radius: 20px; margin-bottom: 8px;">GAMING M4K · 100% VERIFIED</span>
+            <h4 id="modalBannerTitle" style="font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0;">PREMIUM FREE FIRE ACCOUNT</h4>
+          </div>
+          <span id="modalAccountBadge" class="acc-badge badge-prize" style="position: absolute; top: 12px; right: 12px; z-index: 2;">👑 Verified</span>
         </div>
         <div style="background: #f8fafc; border-radius: 12px; padding: 14px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
@@ -2702,8 +2707,21 @@
           </div>
 
           <div class="form-group" style="margin-bottom: 14px;">
-            <label class="form-label">Account Image URL (Photo Link)</label>
-            <input type="url" class="form-control" id="accEditImage" placeholder="https://images.unsplash.com/... or direct image link" required>
+            <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Account Photo / Banner (Link or Upload)</span>
+              <span style="font-size: 0.75rem; color: var(--primary);">Supports Direct Upload</span>
+            </label>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <input type="text" class="form-control" id="accEditImage" placeholder="Paste image URL (https://...) or click Upload" oninput="previewAccImage(this.value)" required>
+              <label class="btn btn-secondary" style="white-space: nowrap; cursor: pointer; padding: 8px 14px; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px; margin: 0;">
+                <i data-lucide="upload" style="width: 14px;"></i> Upload
+                <input type="file" id="accEditFileInput" accept="image/*" style="display: none;" onchange="handleAccFileUpload(event)">
+              </label>
+            </div>
+            <div id="accImgPreviewBox" style="width: 100%; height: 130px; border-radius: 8px; border: 1px dashed var(--border); overflow: hidden; display: none; margin-top: 6px; background: rgba(0,0,0,0.2); position: relative;">
+              <img id="accImgPreview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; bottom: 6px; right: 8px; font-size: 0.7rem; background: rgba(0,0,0,0.6); color: #fff; padding: 2px 8px; border-radius: 4px;">Photo Preview</span>
+            </div>
           </div>
 
           <div class="form-group" style="margin-bottom: 16px;">
@@ -2751,8 +2769,21 @@
           </div>
 
           <div class="form-group" style="margin-bottom: 16px;">
-            <label class="form-label">Banner Image URL (Photo Link)</label>
-            <input type="url" class="form-control" id="memEditImage" placeholder="https://images.unsplash.com/... or image link" required>
+            <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Membership Photo / Banner</span>
+              <span style="font-size: 0.75rem; color: var(--primary);">Supports Direct Upload</span>
+            </label>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <input type="text" class="form-control" id="memEditImage" placeholder="Paste image URL (https://...) or click Upload" oninput="previewMemImage(this.value)" required>
+              <label class="btn btn-secondary" style="white-space: nowrap; cursor: pointer; padding: 8px 14px; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px; margin: 0;">
+                <i data-lucide="upload" style="width: 14px;"></i> Upload
+                <input type="file" id="memEditFileInput" accept="image/*" style="display: none;" onchange="handleMemFileUpload(event)">
+              </label>
+            </div>
+            <div id="memImgPreviewBox" style="width: 100%; height: 130px; border-radius: 8px; border: 1px dashed var(--border); overflow: hidden; display: none; margin-top: 6px; background: rgba(0,0,0,0.2); position: relative;">
+              <img id="memImgPreview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; bottom: 6px; right: 8px; font-size: 0.7rem; background: rgba(0,0,0,0.6); color: #fff; padding: 2px 8px; border-radius: 4px;">Photo Preview</span>
+            </div>
           </div>
 
           <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -2905,7 +2936,7 @@
         uid: 'UID: 284981***',
         badge: '👑 Grand Prize',
         category: 'grand-prize evo',
-        image: ''
+        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80'
       },
       {
         id: 'acc_02',
@@ -2919,7 +2950,7 @@
         uid: 'UID: 194821***',
         badge: '🔥 On Sale',
         category: 'sale',
-        image: ''
+        image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=700&q=80'
       },
       {
         id: 'acc_03',
@@ -2933,7 +2964,7 @@
         uid: 'UID: 338192***',
         badge: '⚡ Max Evo Guns',
         category: 'evo sale',
-        image: ''
+        image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80'
       },
       {
         id: 'acc_04',
@@ -2947,14 +2978,24 @@
         uid: 'UID: 441098***',
         badge: '⭐ Verified Choice',
         category: 'sale',
-        image: ''
+        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80'
       }
     ];
 
     function getAccounts() {
       try {
         const stored = JSON.parse(localStorage.getItem('m4k_accounts'));
-        if (stored && Array.isArray(stored) && stored.length > 0) return stored;
+        if (stored && Array.isArray(stored) && stored.length > 0) {
+          let modified = false;
+          stored.forEach((acc, i) => {
+            if (!acc.image && DEFAULT_ACCOUNTS[i] && DEFAULT_ACCOUNTS[i].image) {
+              acc.image = DEFAULT_ACCOUNTS[i].image;
+              modified = true;
+            }
+          });
+          if (modified) localStorage.setItem('m4k_accounts', JSON.stringify(stored));
+          return stored;
+        }
       } catch(e) {}
       return DEFAULT_ACCOUNTS;
     }
@@ -3022,7 +3063,7 @@
         ` : '';
 
         return `
-          <div class="acc-card" onclick="openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}')" style="cursor: pointer;">
+          <div class="acc-card" onclick="openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}', '${escapeAttr(acc.image || '')}', '${escapeAttr(acc.badge || 'Verified')}')" style="cursor: pointer;">
             ${imageHeader}
             <div class="acc-body">
               <h3 class="acc-title">${acc.title}</h3>
@@ -3037,7 +3078,7 @@
                   ${acc.oldPrice ? `<span class="acc-old-price">${acc.oldPrice}</span>` : ''}
                   <span class="acc-price">${acc.price}</span>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}')">
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}', '${escapeAttr(acc.image || '')}', '${escapeAttr(acc.badge || 'Verified')}')">
                   <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
                 </button>
               </div>
@@ -3083,6 +3124,7 @@
         document.getElementById('accEditLogin').value = 'Clean Gmail';
         document.getElementById('accEditUid').value = 'UID: ';
         document.getElementById('accEditImage').value = '';
+        previewAccImage('');
       } else {
         const accs = getAccounts();
         const a = accs.find(item => item.id === id);
@@ -3096,6 +3138,7 @@
           document.getElementById('accEditLogin').value = a.login || '';
           document.getElementById('accEditUid').value = a.uid || '';
           document.getElementById('accEditImage').value = a.image || '';
+          previewAccImage(a.image || '');
           document.getElementById('accEditBadge').value = a.badge || '👑 Grand Prize';
         }
       }
@@ -3275,6 +3318,7 @@
       const badgeEl = document.getElementById('memEditBadge');
       if (badgeEl) badgeEl.value = m.badge || '';
       document.getElementById('memEditImage').value = m.image || '';
+      previewMemImage(m.image || '');
 
       const modal = document.getElementById('membershipEditModal');
       if (modal) modal.classList.add('open');
@@ -3623,7 +3667,7 @@
     }
 
     // ─── BUY MODAL / ACCOUNT DETAILS DIALOG ───
-    function openAccountPage(title, price, level, likes, items, login, uid) {
+    function openAccountPage(title, price, level, likes, items, login, uid, image, badge) {
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalBannerTitle').textContent = title;
       document.getElementById('modalPrice').textContent = price;
@@ -3632,11 +3676,84 @@
       document.getElementById('modalItems').textContent = items;
       document.getElementById('modalLogin').textContent = login;
 
+      const imgEl = document.getElementById('modalAccountImg');
+      const fallbackEl = document.getElementById('modalBannerFallback');
+      const badgeEl = document.getElementById('modalAccountBadge');
+      if (badgeEl) badgeEl.textContent = badge || 'Verified';
+
+      if (image && image.trim().length > 5) {
+        if (imgEl) {
+          imgEl.src = image;
+          imgEl.style.display = 'block';
+        }
+        if (fallbackEl) fallbackEl.style.display = 'none';
+      } else {
+        if (imgEl) imgEl.style.display = 'none';
+        if (fallbackEl) fallbackEl.style.display = 'flex';
+      }
+
       const whatsappText = encodeURIComponent(`Hi GAMING M4K, I want to purchase this Free Fire Account:\n\n*${title}*\nPrice: ${price}\nLevel: ${level}\nItems: ${items}`);
       document.getElementById('modalBuyBtn').href = `https://wa.me/94770000000?text=${whatsappText}`;
 
       document.getElementById('accountModal').classList.add('open');
       updateIcons();
+    }
+
+    // Helper functions for image upload & preview
+    function previewAccImage(url) {
+      const box = document.getElementById('accImgPreviewBox');
+      const img = document.getElementById('accImgPreview');
+      if (url && url.trim().length > 5) {
+        img.src = url;
+        box.style.display = 'block';
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    function handleAccFileUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        alert('Please choose an image file (PNG, JPG, WebP).');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const dataUrl = evt.target.result;
+        document.getElementById('accEditImage').value = dataUrl;
+        previewAccImage(dataUrl);
+        showToast('Image uploaded successfully!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function previewMemImage(url) {
+      const box = document.getElementById('memImgPreviewBox');
+      const img = document.getElementById('memImgPreview');
+      if (url && url.trim().length > 5) {
+        img.src = url;
+        box.style.display = 'block';
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    function handleMemFileUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        alert('Please choose an image file (PNG, JPG, WebP).');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const dataUrl = evt.target.result;
+        document.getElementById('memEditImage').value = dataUrl;
+        previewMemImage(dataUrl);
+        showToast('Banner uploaded successfully!');
+      };
+      reader.readAsDataURL(file);
     }
 
     function closeModal() {
