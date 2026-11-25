@@ -3666,37 +3666,28 @@
       showToast('You have been logged out.');
     }
 
-    // ─── BUY MODAL / ACCOUNT DETAILS DIALOG ───
+    // ─── BUY MODAL / ACCOUNT DETAILS NAVIGATION ───
     function openAccountPage(title, price, level, likes, items, login, uid, image, badge) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalBannerTitle').textContent = title;
-      document.getElementById('modalPrice').textContent = price;
-      document.getElementById('modalLevel').textContent = level;
-      document.getElementById('modalLikes').textContent = likes;
-      document.getElementById('modalItems').textContent = items;
-      document.getElementById('modalLogin').textContent = login;
+      const accData = {
+        title: title || '',
+        price: price || '',
+        level: level || '',
+        likes: likes || '',
+        items: items || '',
+        login: login || '',
+        uid: uid || '',
+        image: image || '',
+        badge: badge || 'Verified'
+      };
 
-      const imgEl = document.getElementById('modalAccountImg');
-      const fallbackEl = document.getElementById('modalBannerFallback');
-      const badgeEl = document.getElementById('modalAccountBadge');
-      if (badgeEl) badgeEl.textContent = badge || 'Verified';
-
-      if (image && image.trim().length > 5) {
-        if (imgEl) {
-          imgEl.src = image;
-          imgEl.style.display = 'block';
-        }
-        if (fallbackEl) fallbackEl.style.display = 'none';
-      } else {
-        if (imgEl) imgEl.style.display = 'none';
-        if (fallbackEl) fallbackEl.style.display = 'flex';
+      try {
+        localStorage.setItem('m4k_selected_account', JSON.stringify(accData));
+      } catch(e) {
+        console.warn('localStorage save failed:', e);
       }
 
-      const whatsappText = encodeURIComponent(`Hi GAMING M4K, I want to purchase this Free Fire Account:\n\n*${title}*\nPrice: ${price}\nLevel: ${level}\nItems: ${items}`);
-      document.getElementById('modalBuyBtn').href = `https://wa.me/94770000000?text=${whatsappText}`;
-
-      document.getElementById('accountModal').classList.add('open');
-      updateIcons();
+      const params = new URLSearchParams(accData);
+      window.location.href = `details.html?${params.toString()}`;
     }
 
     // Helper functions for image upload & preview
