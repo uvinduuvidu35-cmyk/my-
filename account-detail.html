@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>N748 | Free Fire Accounts | GAMING M4K</title>
+  <meta name="description" content="View full account specifications, gallery screenshots and buy verified Free Fire accounts from GAMING M4K.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Firebase SDKs (Compat v10) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <style>
+    /* ─── Global Reset & Custom Blue/Navy Palette ─── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #1e3a8a;
+      --primary-deep: #0f172a;
+      --primary-light: #38bdf8;
+      --primary-lighter: #f0f9ff;
+      --primary-glow: rgba(2, 132, 199, 0.25);
+      
+      --grad: linear-gradient(135deg, #1e3a8a, #0284c7, #38bdf8);
+      --grad-cyan: linear-gradient(135deg, #0284c7, #38bdf8);
+      
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-focus: #0284c7;
+      
+      --text: #0f172a;
+      --text2: #475569;
+      --text3: #94a3b8;
+      
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --purple-bg: #f5f3ff;
+      --purple-border: #ede9fe;
+      --purple-text: #6d28d9;
+      --purple-sub: #7c3aed;
+      --purple-bar: #8b5cf6;
+      
+      --nav-h: 68px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ─── Top Navbar (Matching user screenshot) ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .brand-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    .brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-name span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-center {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-center { display: flex; }
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary);
+      background: var(--primary-lighter);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-login {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      color: var(--text2);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-login:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-lighter);
+    }
+
+    .btn-signup {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      border: none;
+      background: var(--grad);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--primary-glow);
+      transition: 0.2s;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px var(--primary-glow);
+    }
+
+    /* ─── Breadcrumb ─── */
+    .breadcrumb-bar {
+      padding: 18px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text3);
+    }
+
+    .breadcrumb-bar a {
+      color: var(--text2);
+      font-weight: 500;
+      transition: 0.15s;
+    }
+
+    .breadcrumb-bar a:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb-bar .sep {
+      color: var(--text3);
+      font-size: 0.8rem;
+    }
+
+    .breadcrumb-bar .current {
+      color: #0f172a;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .breadcrumb-code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+      display: inline-block;
+    }
+
+    /* ─── Main 2-Column Detail Layout ─── */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 992px) {
+      .detail-grid {
+        grid-template-columns: 500px 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (min-width: 1150px) {
+      .detail-grid {
+        grid-template-columns: 540px 1fr;
+        gap: 36px;
+      }
+    }
+
+    /* ─── Left Column: Gallery / Carousel ─── */
+    .gallery-card {
+      background: #0f172a;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: sticky;
+      top: 86px;
+    }
+
+    .main-screen-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9.5;
+      background: #020617;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .main-screen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.25s ease;
+    }
+
+    .gallery-counter-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 5;
+    }
+
+    .gallery-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      z-index: 5;
+    }
+
+    .gallery-nav-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .gallery-nav-prev { left: 10px; }
+    .gallery-nav-next { right: 10px; }
+
+    /* Indicator Dots */
+    .gallery-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .gallery-dot.active {
+      width: 22px;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    /* Thumbnail Strip */
+    .thumbnails-scroll-container {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .thumbnails-scroll-container::-webkit-scrollbar {
+      height: 4px;
+    }
+    .thumbnails-scroll-container::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+
+    .thumbnails-strip {
+      display: flex;
+      gap: 8px;
+    }
+
+    .thumb-item {
+      flex: 0 0 68px;
+      height: 44px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+      background: #1e293b;
+      position: relative;
+    }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb-item:hover {
+      opacity: 0.9;
+    }
+
+    .thumb-item.active {
+      opacity: 1;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    /* ─── Right Column: Details & Specs ─── */
+    .details-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Top Row: Available Badge & View Count */
+    .status-view-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .status-pill {
+      background: var(--success-bg);
+      color: var(--success);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-pill::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .views-counter {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text3);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Account Title & Code */
+    .account-title-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .code-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .code-icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 3px solid #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .code-icon-circle::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ef4444;
+    }
+
+    .account-code-heading {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+    }
+
+    .uid-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    .uid-display i {
+      color: #ef4444;
+      width: 15px;
+    }
+
+    /* Big Price Display */
+    .price-display-box {
+      padding: 10px 0 4px;
+    }
+
+    .big-price {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #dc2626;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    /* Prime Level Banner Card */
+    .prime-card {
+      background: var(--purple-bg);
+      border: 1px solid var(--purple-border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .prime-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .prime-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #8b5cf6;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+
+    .prime-info h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--purple-text);
+      line-height: 1.2;
+    }
+
+    .prime-info p {
+      font-size: 0.8rem;
+      color: var(--purple-sub);
+      margin-top: 2px;
+    }
+
+    .prime-tier-bars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tier-bar {
+      width: 6px;
+      height: 24px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      transition: 0.2s;
+    }
+
+    .tier-bar.filled {
+      background: var(--purple-bar);
+    }
+
+    /* ─── 8-Box Stats Grid ─── */
+    .stats-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 600px) {
+      .stats-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 4px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      transition: transform 0.2s;
+    }
+
+    .stat-tile:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .stat-tile-icon {
+      margin-bottom: 5px;
+      color: #dc2626;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-tile-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+    }
+
+    .stat-tile-lbl {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text3);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ─── Evo Gun Details Section ─── */
+    .evo-details-section {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .evo-sec-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #b45309;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .evo-guns-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .evo-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      transition: 0.2s;
+    }
+
+    .evo-item-row:hover {
+      background: #fef3c7;
+    }
+
+    .evo-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .evo-bullet-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .evo-bullet-icon::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f59e0b;
+    }
+
+    .evo-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .evo-level-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #b45309;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .evo-level-badge.max {
+      color: #15803d;
+      background: #dcfce7;
+      border-color: #bbf7d0;
+    }
+
+    /* ─── Purchase & Booking Form Section ─── */
+    .order-card {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .order-card-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 18px;
+    }
+
+    .order-card-hdr h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text2);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.92rem;
+      outline: none;
+      transition: 0.2s;
+      background: #ffffff;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-lighter);
+    }
+
+    /* Bank info box */
+    .bank-info-box {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+    }
+
+    .bank-info-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .bank-detail-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 0;
+      color: var(--text2);
+    }
+
+    /* File upload box */
+    .file-upload-wrap {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      background: #f8fafc;
+      transition: 0.2s;
+    }
+
+    .file-upload-wrap:hover {
+      border-color: var(--primary);
+      background: var(--primary-lighter);
+    }
+
+    .slip-preview {
+      max-height: 120px;
+      border-radius: 8px;
+      margin: 10px auto 0;
+      display: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Action Buttons */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 500px) {
+      .actions-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-wa-action {
+      background: #16a34a;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
+    }
+
+    .btn-wa-action:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+    }
+
+    .btn-submit-action {
+      background: var(--grad);
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .btn-submit-action:hover {
+      background: var(--grad-cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Back Button Bar */
+    .back-btn-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 30px;
+    }
+
+    .btn-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text2);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .btn-back-link:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Confirmation Modal */
+    .confirm-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .confirm-modal-overlay.open {
+      display: flex;
+    }
+
+    .confirm-modal-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      animation: modalPop 0.25s ease-out;
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ─── Toast Notification ─── */
+    .toast-msg {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--grad);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(2, 132, 199, 0.35);
+      z-index: 3000;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: toastIn 0.3s ease;
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Auth Modal Styles ─── */
+    .auth-modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      max-width: 440px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-md);
+      animation: modalPop 0.25s ease-out;
+    }
+    .auth-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .auth-tab {
+      padding: 9px;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text2);
+      transition: 0.2s;
+    }
+    .auth-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+      color: var(--text3);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .btn-google {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-google:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .success-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-left">
+        <img src="logo.jpg" alt="GAMING M4K" class="brand-avatar">
+        <span class="brand-name">GAMING <span>M4K</span></span>
+      </a>
+
+      <div class="nav-center">
+        <a href="index.html" class="nav-link"><i data-lucide="home" style="width:16px;"></i> Home</a>
+        <a href="index.html#accounts" class="nav-link active"><i data-lucide="gamepad-2" style="width:16px;"></i> Accounts</a>
+        <a href="index.html#accounts" class="nav-link"><i data-lucide="tag" style="width:16px;"></i> On Sale</a>
+      </div>
+
+      <div class="nav-right">
+        <!-- Logged Out State -->
+        <div id="detailNavLoggedOut" style="display: flex; align-items: center; gap: 8px;">
+          <button class="btn-login" onclick="openAuthModal('login')">
+            <i data-lucide="log-in" style="width:15px;"></i> Login
+          </button>
+          <button class="btn-signup" onclick="openAuthModal('signup')">
+            <i data-lucide="user-plus" style="width:15px;"></i> Sign Up
+          </button>
+        </div>
+
+        <!-- Logged In State -->
+        <div id="detailNavLoggedIn" style="display: none; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="User" style="width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid #38bdf8; object-fit: cover;">
+          <span style="font-weight: 700; font-size: 0.9rem; color: var(--text);" id="detailUserName">Gamer</span>
+          <button class="btn-login" style="padding: 6px 12px; font-size: 0.8rem;" onclick="handleLogout()" title="Logout">
+            <i data-lucide="log-out" style="width:14px;"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumb Bar -->
+    <div class="breadcrumb-bar">
+      <a href="index.html">Home</a>
+      <span class="sep">&gt;</span>
+      <a href="index.html#accounts">Accounts</a>
+      <span class="sep">&gt;</span>
+      <span class="current">
+        <span class="breadcrumb-code-dot"></span>
+        <span id="breadCode">N748</span>
+      </span>
+    </div>
+
+    <!-- Main 2-Column Detail Layout -->
+    <div class="detail-grid">
+
+      <!-- ─── Left Column: Gallery & Screenshots ─── -->
+      <div class="gallery-col">
+        <div class="gallery-card">
+          <!-- Main Screen View -->
+          <div class="main-screen-wrap">
+            <div class="gallery-counter-badge">
+              <i data-lucide="camera" style="width: 13px;"></i>
+              <span id="slideCounter">1/13</span>
+            </div>
+
+            <button class="gallery-nav-btn gallery-nav-prev" onclick="prevSlide()" aria-label="Previous image">
+              <i data-lucide="chevron-left" style="width: 20px;"></i>
+            </button>
+            <button class="gallery-nav-btn gallery-nav-next" onclick="nextSlide()" aria-label="Next image">
+              <i data-lucide="chevron-right" style="width: 20px;"></i>
+            </button>
+
+            <!-- Active slide image -->
+            <img id="mainSlideImg" src="hero-bg.webp" class="main-screen-img" alt="Free Fire Account Screenshot">
+          </div>
+
+          <!-- Indicator Dots -->
+          <div class="gallery-dots" id="galleryDots"></div>
+
+          <!-- Thumbnails Strip -->
+          <div class="thumbnails-scroll-container">
+            <div class="thumbnails-strip" id="thumbStrip"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Right Column: Details & Specs ─── -->
+      <div class="details-col">
+
+        <!-- Available Badge & Views -->
+        <div class="status-view-row">
+          <span class="status-pill" id="accStatus">Available</span>
+          <div class="views-counter">
+            <i data-lucide="eye" style="width: 15px;"></i>
+            <span id="viewsCount">183</span>
+          </div>
+        </div>
+
+        <!-- Account Code & UID -->
+        <div class="account-title-box">
+          <div class="code-title-row">
+            <div class="code-icon-circle"></div>
+            <h1 class="account-code-heading" id="accCodeTitle">N748</h1>
+          </div>
+          <div class="uid-display">
+            <i data-lucide="fingerprint"></i>
+            <span id="accUIDDisplay">UID: 181******48</span>
+          </div>
+        </div>
+
+        <!-- Big Price Display -->
+        <div class="price-display-box">
+          <div class="big-price" id="accBigPrice">LKR 15,000</div>
+        </div>
+
+        <!-- Prime Level Card -->
+        <div class="prime-card">
+          <div class="prime-left">
+            <div class="prime-icon-wrap">
+              <i data-lucide="crown" style="width: 22px;"></i>
+            </div>
+            <div class="prime-info">
+              <h4 id="primeTitle">Prime Level 5</h4>
+              <p id="primeSub">Free Fire Prime subscription — Tier 5 of 8</p>
+            </div>
+          </div>
+          <div class="prime-tier-bars" id="primeTierBars">
+            <div class="tier-bar filled"></div>
+            <div class="tier-bar filled"></div>
+            <div class="tier-bar filled"></div>
+            <div class="tier-bar filled"></div>
+            <div class="tier-bar filled"></div>
+            <div class="tier-bar"></div>
+            <div class="tier-bar"></div>
+            <div class="tier-bar"></div>
+          </div>
+        </div>
+
+        <!-- 8-Box Stats Grid -->
+        <div class="stats-card-grid">
+          <!-- Level -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="trending-up" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statLevel">67</div>
+            <div class="stat-tile-lbl">Level</div>
+          </div>
+          <!-- Rank -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="shield" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statRank">Heroic</div>
+            <div class="stat-tile-lbl">Rank</div>
+          </div>
+          <!-- Gun Skins -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="crosshair" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statGunSkins">291</div>
+            <div class="stat-tile-lbl">Gun Skins</div>
+          </div>
+          <!-- Bundles -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="shirt" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statBundles">293</div>
+            <div class="stat-tile-lbl">Bundles</div>
+          </div>
+          <!-- Diamonds -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="gem" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statDiamonds">3</div>
+            <div class="stat-tile-lbl">Diamonds</div>
+          </div>
+          <!-- Emotes -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="music" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statEmotes">42</div>
+            <div class="stat-tile-lbl">Emotes</div>
+          </div>
+          <!-- Animations -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="sparkles" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statAnimations">5</div>
+            <div class="stat-tile-lbl">Animations</div>
+          </div>
+          <!-- First Skins -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="star" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statFirstSkins">3</div>
+            <div class="stat-tile-lbl">First Skins</div>
+          </div>
+        </div>
+
+        <!-- Evo Gun Details Section -->
+        <div class="evo-details-section">
+          <div class="evo-sec-header">
+            <i data-lucide="crosshair" style="width: 14px;"></i>
+            <span>Evo Gun Details</span>
+          </div>
+          <div class="evo-guns-list" id="evoList">
+            <div class="evo-item-row">
+              <div class="evo-left">
+                <div class="evo-bullet-icon"></div>
+                <span class="evo-name">M4A1 - Infernal Draco</span>
+              </div>
+              <span class="evo-level-badge">Lv 3</span>
+            </div>
+            <div class="evo-item-row">
+              <div class="evo-left">
+                <div class="evo-bullet-icon"></div>
+                <span class="evo-name">MP40 - Predatory Cobra</span>
+              </div>
+              <span class="evo-level-badge max">Lv 7 (Max)</span>
+            </div>
+            <div class="evo-item-row">
+              <div class="evo-left">
+                <div class="evo-bullet-icon"></div>
+                <span class="evo-name">AK47 - Blue Flame Draco</span>
+              </div>
+              <span class="evo-level-badge max">Lv 7 (Max)</span>
+            </div>
+            <div class="evo-item-row">
+              <div class="evo-left">
+                <div class="evo-bullet-icon"></div>
+                <span class="evo-name">XM8 - Destiny Guardian</span>
+              </div>
+              <span class="evo-level-badge">Lv 5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Order & Buy Form ─── -->
+        <div class="order-card" id="orderSection">
+          <div class="order-card-hdr">
+            <h3><i data-lucide="shopping-bag" style="color:var(--primary); width:20px;"></i> Order This Account</h3>
+            <span style="font-size:0.8rem; font-weight:700; color:#16a34a; background:#dcfce7; padding:4px 8px; border-radius:6px;">Instant Transfer</span>
+          </div>
+
+          <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Your Full Name (ඔබගේ සම්පූර්ණ නම)</label>
+              <input type="text" id="buyerName" class="form-control" placeholder="e.g. Kasun Kalhara" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">WhatsApp Mobile Number (දුරකථන අංකය)</label>
+              <input type="tel" id="buyerPhone" class="form-control" placeholder="07X XXXXXXX" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Payment Method (ගෙවීම් ක්‍රමය)</label>
+              <select id="payMethod" class="form-control" onchange="updateBankInfo()">
+                <option value="Commercial Bank">Commercial Bank Transfer / CDM</option>
+                <option value="Bank of Ceylon">Bank of Ceylon (BOC) Deposit</option>
+                <option value="Sampath Bank">Sampath Bank / Vishwa</option>
+                <option value="eZ Cash">eZ Cash / Dialog Reload</option>
+                <option value="Binance USDT">Binance Pay (Crypto USDT)</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Bank Account Info -->
+            <div class="bank-info-box" id="bankInfoBox">
+              <div class="bank-info-header">
+                <span id="bankTitle">Commercial Bank Deposit Info</span>
+                <span style="color: #16a34a; font-size: 0.75rem;">Verified Store Account</span>
+              </div>
+              <div class="bank-detail-line">
+                <span>Account Number:</span>
+                <strong id="bankAccNo" style="letter-spacing: 1px; color:#0f172a;">8002938192</strong>
+              </div>
+              <div class="bank-detail-line">
+                <span>Account Name:</span>
+                <strong id="bankAccName">GAMING M4K STORE</strong>
+              </div>
+              <div class="bank-detail-line">
+                <span>Branch:</span>
+                <strong id="bankBranch">Colombo Main</strong>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Attach Payment Slip / Screenshot (ස්ලිප් පත)</label>
+              <div class="file-upload-wrap" onclick="document.getElementById('slipFile').click()">
+                <i data-lucide="upload-cloud" style="width:24px; color:var(--primary); margin:0 auto 4px;"></i>
+                <div style="font-size:0.82rem; font-weight:600; color:var(--text2);">Click to upload bank transfer slip</div>
+                <div style="font-size:0.75rem; color:var(--text3);">Supports JPG, PNG, WEBP (Max 5MB)</div>
+                <input type="file" id="slipFile" style="display: none;" accept="image/*" onchange="handleSlipSelected(this)">
+                <img id="slipPreviewImg" class="slip-preview" alt="Payment Slip Preview">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Special Notes (අමතර සටහන් - Optional)</label>
+              <input type="text" id="buyerNotes" class="form-control" placeholder="e.g. Please send Gmail credentials to my WhatsApp">
+            </div>
+
+            <div class="actions-grid">
+              <button type="button" class="btn-action btn-wa-action" onclick="orderViaWhatsApp()">
+                <i data-lucide="message-circle" style="width: 18px;"></i>
+                Order via WhatsApp
+              </button>
+              <button type="submit" class="btn-action btn-submit-action">
+                <i data-lucide="check-circle" style="width: 18px;"></i>
+                Confirm Booking
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Back to Store Bar -->
+    <div class="back-btn-row">
+      <a href="index.html#accounts" class="btn-back-link">
+        <i data-lucide="arrow-left" style="width: 16px;"></i>
+        Back to All Free Fire Accounts
+      </a>
+      <div style="font-size: 0.85rem; color: var(--text3);">
+        GAMING M4K Official Store &bull; Sri Lanka
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="detailToast">
+    <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+    <span id="detailToastText">Action successful</span>
+  </div>
+
+  <!-- Auth Modal (Firebase) -->
+  <div class="confirm-modal-overlay" id="detailAuthModal" onclick="if(event.target === this) closeAuthModal()">
+    <div class="auth-modal-card">
+      <div class="auth-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <img src="logo.jpg" alt="Logo" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #38bdf8; object-fit: cover;">
+          <h3 style="font-family:'Rajdhani', sans-serif; font-size:1.3rem; font-weight:800; color:#0f172a;">GAMING M4K Member Access</h3>
+        </div>
+        <button style="background:none; border:none; cursor:pointer;" onclick="closeAuthModal()"><i data-lucide="x"></i></button>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="detailTabLogin" onclick="switchAuthTab('login')">Login</button>
+        <button class="auth-tab" id="detailTabSignup" onclick="switchAuthTab('signup')">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="detailFormLogin" onsubmit="handleAuthSubmit(event, 'login')">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="detailLoginEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="detailLoginPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn-signup" style="width: 100%; padding: 12px; margin-top: 6px;">
+          <i data-lucide="log-in" style="width: 16px;"></i> Log In Now
+        </button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="detailFormSignup" style="display: none;" onsubmit="handleAuthSubmit(event, 'signup')">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="detailSignupName" placeholder="e.g. Kasun Kalhara" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="detailSignupEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Create Password (Min 6 chars)</label>
+          <input type="password" class="form-control" id="detailSignupPassword" placeholder="Password" minlength="6" required>
+        </div>
+        <button type="submit" class="btn-signup" style="width: 100%; padding: 12px; margin-top: 6px;">
+          <i data-lucide="user-plus" style="width: 16px;"></i> Register Account
+        </button>
+      </form>
+
+      <div class="auth-divider">or continue with</div>
+      <button class="btn-google" onclick="handleGoogleAuth()">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+        Google Fast Login
+      </button>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div class="confirm-modal-overlay" id="orderSuccessModal">
+    <div class="confirm-modal-box">
+      <div class="success-icon-wrap">
+        <i data-lucide="check" style="width: 32px; height: 32px;"></i>
+      </div>
+      <h2 style="font-family:'Rajdhani', sans-serif; font-size:1.6rem; font-weight:800; color:#0f172a; margin-bottom:8px;">
+        Order Placed Successfully!
+      </h2>
+      <p style="color:var(--text2); font-size:0.9rem; line-height:1.5; margin-bottom:18px;">
+        ස්තූතියි, <strong id="confirmBuyerName">Buyer</strong>! ඔබ තෝරාගත් <strong id="confirmAccCode">N748</strong> ගිණුම වෙන්කරවා ගන්නා ලදී. GAMING M4K Admin කණ්ඩායම සුළු මොහොතකින් ඔබගේ WhatsApp අංකයට ගිණුම් විස්තර සහ Ownership Transfer තොරතුරු එවනු ඇත.
+      </p>
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin-bottom:20px; font-size:0.85rem; text-align:left;">
+        <div><strong>Order Reference:</strong> <span id="confirmRefNo" style="color:var(--primary); font-family:monospace; font-weight:700;">#M4K-82910</span></div>
+        <div style="margin-top:4px;"><strong>Payment Status:</strong> <span style="color:#16a34a; font-weight:700;">Pending Verification</span></div>
+      </div>
+      <button class="btn-signup" style="width:100%;" onclick="closeSuccessModal()">
+        Done / Back to Store
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ─── Free Fire 13-Image Interactive Slides Array ───
+    const slides = [
+      {
+        title: "Gallery Profile Overview",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Combat Rank & Heroic Stats",
+        img: "logo.jpg"
+      },
+      {
+        title: "Draco AK & Cobra MP40 Max",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Green & Red Criminal Bundles",
+        img: "logo.jpg"
+      },
+      {
+        title: "Season 1-5 Elite Pass Badges",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Rare Emotes & Mythic Animations",
+        img: "logo.jpg"
+      },
+      {
+        title: "Exclusive Vault Outfits (293+)",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Gun Skin Arsenal (291 Skins)",
+        img: "logo.jpg"
+      },
+      {
+        title: "Vehicle & Gloo Wall Collection",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Pet Skills & Custom Emotes",
+        img: "logo.jpg"
+      },
+      {
+        title: "Battle Royale Career Stats",
+        img: "hero-bg.webp"
+      },
+      {
+        title: "Clash Squad Grandmaster Badges",
+        img: "logo.jpg"
+      },
+      {
+        title: "Clean Ownership Transfer Guarantee",
+        img: "hero-bg.webp"
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function renderGallery() {
+      const dotsContainer = document.getElementById('galleryDots');
+      const thumbStrip = document.getElementById('thumbStrip');
+      
+      dotsContainer.innerHTML = '';
+      thumbStrip.innerHTML = '';
+
+      slides.forEach((slide, index) => {
+        // Dot
+        const dot = document.createElement('div');
+        dot.className = `gallery-dot ${index === currentSlide ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(index);
+        dotsContainer.appendChild(dot);
+
+        // Thumbnail
+        const thumb = document.createElement('div');
+        thumb.className = `thumb-item ${index === currentSlide ? 'active' : ''}`;
+        thumb.innerHTML = `<img src="${slide.img}" alt="Slide ${index + 1}">`;
+        thumb.onclick = () => goToSlide(index);
+        thumbStrip.appendChild(thumb);
+      });
+
+      updateSlideView();
+    }
+
+    function updateSlideView() {
+      const slide = slides[currentSlide];
+      const mainImg = document.getElementById('mainSlideImg');
+      mainImg.style.opacity = '0.4';
+      setTimeout(() => {
+        mainImg.src = slide.img;
+        mainImg.style.opacity = '1';
+      }, 100);
+
+      document.getElementById('slideCounter').textContent = `${currentSlide + 1}/${slides.length}`;
+
+      // Update dots
+      const dots = document.querySelectorAll('.gallery-dot');
+      dots.forEach((d, idx) => {
+        d.classList.toggle('active', idx === currentSlide);
+      });
+
+      // Update thumbnails
+      const thumbs = document.querySelectorAll('.thumb-item');
+      thumbs.forEach((t, idx) => {
+        t.classList.toggle('active', idx === currentSlide);
+        if (idx === currentSlide) {
+          t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateSlideView();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateSlideView();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlideView();
+    }
+
+    // ─── Query Parameters Parser (Matches index.html and user click) ───
+    function initParams() {
+      const p = new URLSearchParams(window.location.search);
+      
+      const title = p.get('title');
+      const price = p.get('price');
+      const level = p.get('level');
+      const uid   = p.get('uid');
+      const likes = p.get('likes');
+
+      // Default to user screenshot values if no params
+      let code = 'N748';
+      let displayPrice = 'LKR 15,000';
+      let displayUID = 'UID: 181******48';
+      let displayLevel = '67';
+
+      if (title) {
+        if (title.startsWith('Level')) {
+          const num = title.match(/Level\s*(\d+)/i);
+          code = num ? 'N' + (700 + parseInt(num[1])) : title.split('·')[0].trim();
+        } else if (title.includes('·')) {
+          code = title.split('·')[0].trim();
+        } else {
+          code = title;
+        }
+      }
+
+      if (price) {
+        displayPrice = price.startsWith('LKR') || price.startsWith('Rs.') ? price.replace('Rs.', 'LKR') : `LKR ${price}`;
+      }
+      if (uid) {
+        displayUID = uid.startsWith('UID:') ? uid : `UID: ${uid}`;
+      }
+      if (level) {
+        displayLevel = level;
+      }
+
+      document.getElementById('breadCode').textContent = code;
+      document.getElementById('accCodeTitle').textContent = code;
+      document.getElementById('accBigPrice').textContent = displayPrice;
+      document.getElementById('accUIDDisplay').textContent = displayUID;
+      document.getElementById('statLevel').textContent = displayLevel;
+      document.title = `${code} | Free Fire Accounts | GAMING M4K`;
+    }
+
+    // Dynamic Bank Details Selector
+    function updateBankInfo() {
+      const method = document.getElementById('payMethod').value;
+      const title = document.getElementById('bankTitle');
+      const no = document.getElementById('bankAccNo');
+      const name = document.getElementById('bankAccName');
+      const branch = document.getElementById('bankBranch');
+
+      if (method === 'Bank of Ceylon') {
+        title.textContent = 'Bank of Ceylon (BOC) Deposit';
+        no.textContent = '7429104812';
+        name.textContent = 'GAMING M4K STORE';
+        branch.textContent = 'Kandy City';
+      } else if (method === 'Sampath Bank') {
+        title.textContent = 'Sampath Bank / Vishwa';
+        no.textContent = '0182937102';
+        name.textContent = 'GAMING M4K STORE';
+        branch.textContent = 'Colombo Fort';
+      } else if (method === 'eZ Cash') {
+        title.textContent = 'eZ Cash Mobile Reload';
+        no.textContent = '077 000 0000';
+        name.textContent = 'GAMING M4K EZ';
+        branch.textContent = 'Instant Mobile Wallet';
+      } else if (method === 'Binance USDT') {
+        title.textContent = 'Binance Pay USDT ID';
+        no.textContent = '382910482 (USDT)';
+        name.textContent = 'GAMING_M4K_CRYPTO';
+        branch.textContent = 'Binance Pay / TRC20';
+      } else {
+        title.textContent = 'Commercial Bank Deposit';
+        no.textContent = '8002938192';
+        name.textContent = 'GAMING M4K STORE';
+        branch.textContent = 'Colombo Main';
+      }
+    }
+
+    // Slip Upload Preview
+    function handleSlipSelected(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('slipPreviewImg');
+          img.src = e.target.result;
+          img.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Order via WhatsApp Direct
+    function orderViaWhatsApp() {
+      const code = document.getElementById('accCodeTitle').textContent;
+      const price = document.getElementById('accBigPrice').textContent;
+      const uid = document.getElementById('accUIDDisplay').textContent;
+      const buyerName = document.getElementById('buyerName').value.trim() || 'Valued Customer';
+      const phone = document.getElementById('buyerPhone').value.trim() || 'N/A';
+      const payMethod = document.getElementById('payMethod').value;
+
+      const msg = `*GAMING M4K - FREE FIRE ACCOUNT ORDER*\n----------------------------------\n` +
+                  `*Account Code:* ${code}\n` +
+                  `*Price:* ${price}\n` +
+                  `*${uid}*\n` +
+                  `----------------------------------\n` +
+                  `*Customer Name:* ${buyerName}\n` +
+                  `*WhatsApp Number:* ${phone}\n` +
+                  `*Payment Method:* ${payMethod}\n\n` +
+                  `Please verify availability and send transfer credentials. Thank you!`;
+
+      const waUrl = `https://wa.me/94770000000?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // ─── Firebase Auth & Modals in Account Detail ───
+    function openAuthModal(tab) {
+      switchAuthTab(tab || 'login');
+      document.getElementById('detailAuthModal').classList.add('open');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeAuthModal() {
+      document.getElementById('detailAuthModal').classList.remove('open');
+    }
+
+    function switchAuthTab(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('detailTabLogin').classList.toggle('active', isLogin);
+      document.getElementById('detailTabSignup').classList.toggle('active', !isLogin);
+      document.getElementById('detailFormLogin').style.display = isLogin ? 'block' : 'none';
+      document.getElementById('detailFormSignup').style.display = isLogin ? 'none' : 'block';
+    }
+
+    function showDetailToast(msg) {
+      const t = document.getElementById('detailToast');
+      document.getElementById('detailToastText').textContent = msg;
+      t.style.display = 'flex';
+      setTimeout(() => { t.style.display = 'none'; }, 3500);
+    }
+
+    async function handleAuthSubmit(e, type) {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Processing...';
+
+      try {
+        if (type === 'signup') {
+          const name = document.getElementById('detailSignupName').value.trim();
+          const email = document.getElementById('detailSignupEmail').value.trim();
+          const pass = document.getElementById('detailSignupPassword').value;
+
+          const user = await FirebaseAuth.signUp(email, pass, name);
+          showDetailToast(`Welcome, ${user.displayName || name}! Account ready.`);
+          closeAuthModal();
+        } else {
+          const email = document.getElementById('detailLoginEmail').value.trim();
+          const pass = document.getElementById('detailLoginPassword').value;
+
+          const user = await FirebaseAuth.login(email, pass);
+          showDetailToast(`Welcome back, ${user.displayName || user.email.split('@')[0]}!`);
+          closeAuthModal();
+        }
+      } catch (err) {
+        console.error("Auth error:", err);
+        showDetailToast(getFirebaseErrorMessage(err));
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHtml;
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    async function handleGoogleAuth() {
+      try {
+        const user = await FirebaseAuth.loginWithGoogle();
+        showDetailToast(`Google Login Success: ${user.displayName || user.email}!`);
+        closeAuthModal();
+      } catch (err) {
+        console.error("Google Auth error:", err);
+        showDetailToast(getFirebaseErrorMessage(err));
+      }
+    }
+
+    async function handleLogout() {
+      try {
+        await FirebaseAuth.logout();
+        showDetailToast("Logged out successfully.");
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+    }
+
+    // Form Submission & Firestore Order Saving
+    async function handleOrderSubmit(e) {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Saving Order...';
+
+      const name = document.getElementById('buyerName').value.trim();
+      const phone = document.getElementById('buyerPhone').value.trim();
+      const payMethod = document.getElementById('payMethod').value;
+      const notes = document.getElementById('buyerNotes').value.trim();
+      const code = document.getElementById('accCodeTitle').textContent;
+      const price = document.getElementById('accBigPrice').textContent;
+      const uid = document.getElementById('accUIDDisplay').textContent;
+      const orderRefNo = '#M4K-' + Math.floor(10000 + Math.random() * 90000);
+
+      // Save to Firebase Firestore
+      const orderPayload = {
+        orderRef: orderRefNo,
+        accountCode: code,
+        price: price,
+        accountUID: uid,
+        buyerName: name,
+        buyerPhone: phone,
+        paymentMethod: payMethod,
+        notes: notes || '',
+        userUid: (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.getCurrentUser()) ? FirebaseAuth.getCurrentUser().uid : null,
+        userEmail: (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.getCurrentUser()) ? FirebaseAuth.getCurrentUser().email : null
+      };
+
+      try {
+        if (typeof FirebaseStore !== 'undefined') {
+          await FirebaseStore.saveOrder(orderPayload);
+          console.log("Order saved to Firestore successfully:", orderRefNo);
+        }
+      } catch (err) {
+        console.warn("Firestore save warning:", err);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHtml;
+      }
+
+      document.getElementById('confirmBuyerName').textContent = name;
+      document.getElementById('confirmAccCode').textContent = code;
+      document.getElementById('confirmRefNo').textContent = orderRefNo;
+
+      document.getElementById('orderSuccessModal').classList.add('open');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('orderSuccessModal').classList.remove('open');
+      window.location.href = 'index.html#accounts';
+    }
+
+    // Initialize Everything
+    document.addEventListener("DOMContentLoaded", () => {
+      initParams();
+      renderGallery();
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Firebase Auth Listener
+      if (typeof FirebaseAuth !== 'undefined') {
+        FirebaseAuth.onStateChanged((user) => {
+          if (user) {
+            const displayName = user.displayName || user.email.split('@')[0] || 'Gamer';
+            document.getElementById('detailNavLoggedOut').style.display = 'none';
+            document.getElementById('detailNavLoggedIn').style.display = 'flex';
+            document.getElementById('detailUserName').textContent = displayName;
+            const buyerInput = document.getElementById('buyerName');
+            if (buyerInput && !buyerInput.value) {
+              buyerInput.value = displayName;
+            }
+          } else {
+            document.getElementById('detailNavLoggedOut').style.display = 'flex';
+            document.getElementById('detailNavLoggedIn').style.display = 'none';
+          }
+          if (window.lucide) lucide.createIcons();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

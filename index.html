@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GAMING M4K | Premium Free Fire Accounts & Diamond Marketplace</title>
+  <meta name="description" content="Buy and sell verified Free Fire accounts with rare bundles, Evo guns, and diamonds in Sri Lanka with GAMING M4K.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Firebase SDKs (Compat v10) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <style>
+    /* ─── Reset & Base Variables (Light Blue & Dark Blue Theme) ─── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      /* Primary Blue Palette */
+      --primary: #0284c7;           /* Sky / Cyan vibrant blue */
+      --primary-dark: #1e3a8a;      /* Deep Navy Blue */
+      --primary-deep: #0f172a;      /* Midnight Blue */
+      --primary-light: #38bdf8;     /* Light Electric Cyan */
+      --primary-lighter: #e0f2fe;   /* Soft Ice Blue */
+      --primary-glow: rgba(2, 132, 199, 0.35);
+      
+      /* Gradients */
+      --grad: linear-gradient(135deg, #172554, #1d4ed8, #0ea5e9);       /* Dark blue -> Royal blue -> Cyan */
+      --grad-h: linear-gradient(135deg, #1e40af, #0284c7, #38bdf8);
+      --grad-card-header: linear-gradient(135deg, #091a36 0%, #173461 50%, #0369a1 100%);
+      --grad-dark: linear-gradient(180deg, #030712 0%, #0c1a30 100%);
+      --grad-cyan: linear-gradient(135deg, #0ea5e9, #38bdf8, #7dd3fc);
+
+      --bg: #ffffff;
+      --bg2: #f0f7ff;
+      --bg3: #e0f2fe;
+      --border: rgba(2, 132, 199, 0.16);
+      --border-hover: rgba(2, 132, 199, 0.45);
+      --text: #0f172a;
+      --text2: #334155;
+      --text3: #64748b;
+      --success: #10b981;
+      --gold: #f59e0b;
+      --shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+      --shadow-md: 0 10px 30px rgba(2, 132, 199, 0.16), 0 2px 8px rgba(0,0,0,0.05);
+      --nav-h: 70px;
+      --announce-h: 36px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ─── Announcement Bar ─── */
+    .announce-bar {
+      background: var(--grad);
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: fixed;
+      top: var(--announce-h);
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.06);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .nav-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+      transition: transform 0.25s ease;
+      background: #020617;
+    }
+
+    .nav-logo:hover .nav-logo-img {
+      transform: scale(1.1);
+    }
+
+    .brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text2);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+      background: var(--primary-lighter);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-auth-btns {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-user-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-lighter);
+      padding: 4px 10px 4px 4px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+    }
+
+    .nav-user-chip img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--primary);
+    }
+
+    .nav-user-chip .u-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--grad-h);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border-hover);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-lighter);
+      border-color: var(--primary);
+    }
+
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+    }
+
+    .burger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .burger span {
+      width: 22px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .burger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+    .burger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ─── Mobile Drawer ─── */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: calc(var(--nav-h) + var(--announce-h));
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      z-index: 999;
+      overflow-y: auto;
+      padding: 20px 24px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-drawer.open {
+      display: block;
+      animation: drawerIn 0.25s ease;
+    }
+
+    @keyframes drawerIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .drawer-profile-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+
+    .drawer-profile-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #38bdf8;
+    }
+
+    .drawer-auth-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      color: var(--text2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      transition: 0.2s;
+    }
+
+    .drawer-link:hover, .drawer-link.active {
+      background: var(--primary-lighter);
+      color: var(--primary);
+    }
+
+    /* ─── Hero Section with Dark Free Fire Banner ─── */
+    .hero {
+      margin-top: calc(var(--nav-h) + var(--announce-h));
+      position: relative;
+      min-height: calc(100vh - 106px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #020617;
+      color: #fff;
+      overflow: hidden;
+      padding: 50px 0 70px;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background: url('hero-bg.webp') center center / cover no-repeat;
+      filter: brightness(0.28) contrast(1.15) saturate(1.2);
+      transform: scale(1.03);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 35%, rgba(2, 6, 23, 0.45) 0%, rgba(2, 6, 23, 0.85) 65%, #020617 100%),
+                  linear-gradient(180deg, rgba(2, 6, 23, 0.8) 0%, transparent 35%, transparent 65%, rgba(2, 6, 23, 0.95) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 650px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.22) 0%, rgba(30, 58, 138, 0.1) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-avatar-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--grad);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+      margin-bottom: 16px;
+      animation: floatHero 3.5s ease-in-out infinite;
+    }
+
+    .hero-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: #020617;
+    }
+
+    @keyframes floatHero {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      backdrop-filter: blur(8px);
+      color: #7dd3fc;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+      animation: cyanPulse 1.8s infinite;
+    }
+
+    @keyframes cyanPulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    .hero-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .hero-title .brand-gradient {
+      display: block;
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 40%, #7dd3fc 70%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 25px rgba(14, 165, 233, 0.5));
+    }
+
+    .hero-title .hero-sub-title {
+      font-size: 0.45em;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #38bdf8;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .hero-desc {
+      color: rgba(224, 242, 254, 0.85);
+      font-size: 1rem;
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .btn-hero-wa {
+      background: #0284c7;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-hero-wa:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(14, 165, 233, 0.5);
+    }
+
+    /* Stats Card in Hero */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(14, 165, 233, 0.15);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .h-stat {
+      padding: 14px 10px;
+      text-align: center;
+      background: rgba(3, 7, 18, 0.45);
+    }
+
+    .h-stat-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #e0f2fe;
+      line-height: 1;
+    }
+
+    .h-stat-lbl {
+      font-size: 0.72rem;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* ─── Ticker Strip ─── */
+    .ticker-strip {
+      background: var(--grad);
+      overflow: hidden;
+      padding: 2px 0;
+      border-top: 1px solid rgba(56, 189, 248, 0.2);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickerScroll 24s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── Trust Bar ─── */
+    .trust-bar {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text2);
+    }
+
+    .trust-item i {
+      color: var(--primary);
+    }
+
+    /* ─── Section Shared Styles ─── */
+    .sec {
+      padding: 64px 0;
+    }
+
+    .sec-alt {
+      background: var(--bg2);
+    }
+
+    .sec-hdr {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--bg3);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      border-radius: 50px;
+      padding: 4px 14px;
+      margin-bottom: 10px;
+    }
+
+    .sec-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.7rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .sec-sub {
+      color: var(--text2);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ─── Filter Tabs ─── */
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: #fff;
+      border: 1.5px solid #cbd5e1;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    /* ─── Account Grid & Non-Image Clean Gaming Cards ─── */
+    .acc-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .acc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .acc-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    }
+
+    .acc-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1.5px solid #cbd5e1;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .acc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    /* No-Image Gaming Banner Header */
+    .acc-banner-header {
+      background: var(--grad-card-header);
+      padding: 22px 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 125px;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+      overflow: hidden;
+    }
+
+    .acc-banner-header::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .acc-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .acc-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-available {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+
+    .badge-sale {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+    }
+
+    .badge-prize {
+      background: linear-gradient(135deg, #1e3a8a, #0284c7);
+      color: #fff;
+      border: 1px solid #38bdf8;
+    }
+
+    .acc-uid-tag {
+      background: rgba(15, 23, 42, 0.75);
+      color: #bae6fd;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-family: monospace;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .acc-brand-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    .acc-brand-tag i {
+      color: #38bdf8;
+      width: 20px;
+      height: 20px;
+    }
+
+    .acc-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .acc-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .acc-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+      background: var(--bg2);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .acc-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text2);
+      font-weight: 600;
+    }
+
+    .acc-stat-item i {
+      color: var(--primary);
+      width: 14px;
+      height: 14px;
+    }
+
+    .acc-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .acc-price-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .acc-old-price {
+      font-size: 0.78rem;
+      color: var(--text3);
+      text-decoration: line-through;
+    }
+
+    .acc-price {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    /* ─── Diamond Top-up Packages ─── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .pkg-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    }
+
+    .pkg-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid #cbd5e1;
+      padding: 24px 16px;
+      text-align: center;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .pkg-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 14px;
+      border: 2px solid #bae6fd;
+    }
+
+    .pkg-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .pkg-bonus {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .pkg-price {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    /* ─── How it works steps ─── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    }
+
+    .step-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      padding: 24px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+    }
+
+    .step-badge-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--grad);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .step-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    /* ─── Social Proof & Testimonials ─── */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .proof-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .proof-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .proof-icon {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .proof-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .proof-lbl {
+      font-size: 0.78rem;
+      color: var(--text2);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ─── CTA Banner ─── */
+    .cta-banner {
+      background: var(--grad-dark);
+      border-radius: 24px;
+      padding: 48px 24px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid rgba(14, 165, 233, 0.4);
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.4);
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      background: rgba(14, 165, 233, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #7dd3fc;
+      margin-bottom: 12px;
+    }
+
+    .cta-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .cta-sub {
+      color: rgba(224, 242, 254, 0.85);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 60px 0 24px;
+      border-top: 2px solid var(--primary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    }
+
+    .footer-brand .brand-name {
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38bdf8;
+      transition: 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .footer-col h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      color: #f8fafc;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      transition: 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+
+    /* ─── Modal System (Auth & Account Details) ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.82);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+      animation: modalFadeIn 0.25s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-card {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 460px;
+      width: 100%;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(2, 6, 23, 0.5);
+      border: 1px solid #cbd5e1;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background: #ffffff;
+    }
+
+    .modal-header h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .modal-close {
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .modal-body {
+      padding: 18px 22px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Compact Auth Modal to fit screen without scrolling */
+    #authModal .form-group {
+      margin-bottom: 11px;
+    }
+    #authModal .form-label {
+      margin-bottom: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    #authModal .form-control {
+      padding: 8px 12px;
+      font-size: 0.88rem;
+    }
+    #authModal .auth-tabs {
+      margin-bottom: 14px;
+    }
+    #authModal .auth-tab {
+      padding: 9px;
+      font-size: 0.9rem;
+    }
+    #authModal .auth-divider {
+      margin: 12px 0;
+      font-size: 0.78rem;
+    }
+
+    .modal-banner-box {
+      background: var(--grad-card-header);
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+      color: #fff;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .modal-banner-box .badge-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #bae6fd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .modal-banner-box h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    /* Auth Modal Specifics */
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 12px;
+      background: none;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text3);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .auth-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 18px 0;
+      color: #94a3b8;
+      font-size: 0.78rem;
+    }
+
+    .auth-divider::before, .auth-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .auth-divider:not(:empty)::before {
+      margin-right: .5em;
+    }
+    .auth-divider:not(:empty)::after {
+      margin-left: .5em;
+    }
+
+    .btn-google {
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid #cbd5e1;
+      color: #334155;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-google:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--grad);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(2, 132, 199, 0.35);
+      z-index: 3000;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: toastIn 0.3s ease;
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ─── Floating Live Chat Widget ─── */
+    #chat-btn-wrap {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 1500;
+    }
+
+    #chat-trigger-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--grad);
+      border: 1.5px solid rgba(56, 189, 248, 0.4);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 25px var(--primary-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    #chat-trigger-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .chat-badge-pulse {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #38bdf8;
+      border: 2px solid #fff;
+    }
+
+    #chat-window {
+      display: none;
+      position: fixed;
+      bottom: 94px;
+      right: 20px;
+      width: 360px;
+      max-width: calc(100vw - 40px);
+      height: 520px;
+      max-height: calc(100vh - 120px);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.3);
+      border: 1px solid #cbd5e1;
+      z-index: 1500;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #chat-window.open {
+      display: flex;
+      animation: chatPop 0.25s ease;
+    }
+
+    @keyframes chatPop {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .chat-header {
+      background: var(--grad);
+      color: #fff;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .chat-avatar-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #38bdf8;
+      background: #020617;
+    }
+
+    .chat-info {
+      flex: 1;
+    }
+
+    .chat-info h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .chat-info p {
+      font-size: 0.72rem;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .online-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+    }
+
+    .chat-close-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-msg {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .msg-support {
+      background: #fff;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      color: var(--text);
+    }
+
+    .msg-user {
+      background: var(--grad);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+
+    .chat-input-bar {
+      padding: 12px;
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .chat-input-bar input:focus {
+      border-color: var(--primary);
+    }
+
+    .chat-send-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Desktop Navigation overrides */
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .nav-auth-btns { display: flex; }
+      .burger { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+    <span id="toastText">Logged in successfully!</span>
+  </div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announce-bar">
+    <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+    <span>WELCOME TO GAMING M4K · SRI LANKA'S #1 VERIFIED FREE FIRE STORE · 100% SAFE & INSTANT DELIVERY</span>
+    <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <div class="nav-logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <img src="logo.jpg" alt="GAMING M4K Logo" class="nav-logo-img">
+        <span class="brand-name">GAMING M4K</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#hero" class="active"><i data-lucide="home" style="width: 16px;"></i> Home</a>
+        <a href="#accounts"><i data-lucide="gamepad-2" style="width: 16px;"></i> Accounts</a>
+        <a href="#topup"><i data-lucide="gem" style="width: 16px;"></i> Diamonds</a>
+        <a href="#how-it-works"><i data-lucide="help-circle" style="width: 16px;"></i> How It Works</a>
+        <a href="#support"><i data-lucide="headphones" style="width: 16px;"></i> Support</a>
+      </div>
+
+      <div class="nav-right">
+        <!-- Auth Buttons (Logged Out State) -->
+        <div class="nav-auth-btns" id="navAuthLoggedOut">
+          <button class="btn btn-outline btn-sm" onclick="openAuthModal('login')">
+            <i data-lucide="log-in" style="width: 14px;"></i> Login
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="openAuthModal('signup')">
+            <i data-lucide="user-plus" style="width: 14px;"></i> Sign Up
+          </button>
+        </div>
+
+        <!-- Auth Buttons (Logged In State) -->
+        <div class="nav-user-chip" id="navAuthLoggedIn" style="display: none;">
+          <img src="logo.jpg" alt="User Avatar">
+          <span class="u-name" id="userDisplayName">Gamer</span>
+          <button class="btn btn-outline btn-sm" style="padding: 4px 8px; border-radius: 20px; font-size: 0.75rem;" onclick="handleLogout()" title="Logout">
+            <i data-lucide="log-out" style="width: 13px;"></i>
+          </button>
+        </div>
+
+        <a href="https://wa.me/94770000000?text=Hello%20GAMING%20M4K%2C%20I%20want%20to%20buy%20a%20Free%20Fire%20Account" target="_blank" class="btn btn-hero-wa btn-sm">
+          <i data-lucide="message-square" style="width: 16px;"></i> WhatsApp
+        </a>
+        <button class="burger" id="burgerBtn" onclick="toggleDrawer()" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-profile-bar">
+      <img src="logo.jpg" alt="GAMING M4K Profile" class="drawer-profile-img">
+      <div>
+        <div style="font-weight: 800; font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; color: var(--text);">GAMING M4K</div>
+        <div style="font-size: 0.78rem; color: var(--primary);">Official Store Member</div>
+      </div>
+    </div>
+
+    <!-- Drawer Auth Buttons -->
+    <div class="drawer-auth-row" id="drawerAuthLoggedOut">
+      <button class="btn btn-outline" onclick="closeDrawer(); openAuthModal('login')">
+        <i data-lucide="log-in"></i> Login
+      </button>
+      <button class="btn btn-primary" onclick="closeDrawer(); openAuthModal('signup')">
+        <i data-lucide="user-plus"></i> Sign Up
+      </button>
+    </div>
+    <div id="drawerAuthLoggedIn" style="display: none; margin-bottom: 16px;">
+      <button class="btn btn-outline" style="width: 100%;" onclick="handleLogout()">
+        <i data-lucide="log-out"></i> Logout (<span id="drawerUserName">Gamer</span>)
+      </button>
+    </div>
+
+    <a href="#hero" class="drawer-link active" onclick="closeDrawer()"><i data-lucide="home"></i> Home</a>
+    <a href="#accounts" class="drawer-link" onclick="closeDrawer()"><i data-lucide="gamepad-2"></i> Browse Accounts</a>
+    <a href="#topup" class="drawer-link" onclick="closeDrawer()"><i data-lucide="gem"></i> Diamond Top-Up</a>
+    <a href="#how-it-works" class="drawer-link" onclick="closeDrawer()"><i data-lucide="help-circle"></i> How It Works</a>
+    <a href="#support" class="drawer-link" onclick="closeDrawer()"><i data-lucide="headphones"></i> 24/7 Live Support</a>
+    <div style="margin-top: 20px;">
+      <a href="https://wa.me/94770000000?text=Hello%20GAMING%20M4K" target="_blank" class="btn btn-hero-wa" style="width: 100%;">
+        <i data-lucide="phone"></i> WhatsApp Contact
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-inner">
+      
+      <!-- Profile Avatar Display -->
+      <div class="hero-avatar-wrap">
+        <img src="logo.jpg" alt="GAMING M4K Character Avatar">
+      </div>
+
+      <div class="hero-pill">
+        <span class="pulse-dot"></span>
+        <span>GAMING M4K · Verified FF Marketplace</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-sub-title">PREMIUM FREE FIRE STORE</span>
+        <span class="brand-gradient">GAMING M4K</span>
+      </h1>
+
+      <p class="hero-desc">
+        Buy 100% safe & verified Free Fire accounts with rare bundles, max Evo guns, elite passes, and diamonds at guaranteed best rates in Sri Lanka.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#accounts" class="btn btn-primary">
+          <i data-lucide="gamepad-2" style="width: 18px;"></i> Browse Accounts
+        </a>
+        <a href="https://wa.me/94770000000?text=Hi%20GAMING%20M4K%2C%20I%20am%20looking%20for%20Free%20Fire%20Accounts" target="_blank" class="btn btn-hero-wa">
+          <i data-lucide="message-circle" style="width: 18px;"></i> WhatsApp Order
+        </a>
+      </div>
+
+      <!-- Live Stats Counters -->
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-val">52+</div>
+          <div class="h-stat-lbl">In Stock</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-val">1,450+</div>
+          <div class="h-stat-lbl">Accounts Sold</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-val">99.9%</div>
+          <div class="h-stat-lbl">Happy Gamers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Ticker Strip -->
+  <div class="ticker-strip">
+    <div class="ticker-track">
+      <div class="ticker-item"><i data-lucide="shield-check" style="width:16px;"></i> 100% Anti-Ban Guarantee</div>
+      <div class="ticker-item"><i data-lucide="zap" style="width:16px;"></i> Instant WhatsApp Delivery</div>
+      <div class="ticker-item"><i data-lucide="lock" style="width:16px;"></i> Clean Credentials (Google / FB)</div>
+      <div class="ticker-item"><i data-lucide="gem" style="width:16px;"></i> Fast Diamond Top-up</div>
+      <div class="ticker-item"><i data-lucide="headphones" style="width:16px;"></i> GAMING M4K 24/7 Support</div>
+      <div class="ticker-item"><i data-lucide="award" style="width:16px;"></i> Full Email Change Assistance</div>
+      <!-- Duplicate set for seamless continuous marquee loop -->
+      <div class="ticker-item"><i data-lucide="shield-check" style="width:16px;"></i> 100% Anti-Ban Guarantee</div>
+      <div class="ticker-item"><i data-lucide="zap" style="width:16px;"></i> Instant WhatsApp Delivery</div>
+      <div class="ticker-item"><i data-lucide="lock" style="width:16px;"></i> Clean Credentials (Google / FB)</div>
+      <div class="ticker-item"><i data-lucide="gem" style="width:16px;"></i> Fast Diamond Top-up</div>
+      <div class="ticker-item"><i data-lucide="headphones" style="width:16px;"></i> GAMING M4K 24/7 Support</div>
+      <div class="ticker-item"><i data-lucide="award" style="width:16px;"></i> Full Email Change Assistance</div>
+    </div>
+  </div>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container trust-row">
+      <div class="trust-item"><i data-lucide="check-circle-2"></i> Bank Transfer & eZ Cash Accepted</div>
+      <div class="trust-item"><i data-lucide="shield"></i> 100% Scam-Free Guarantee</div>
+      <div class="trust-item"><i data-lucide="clock"></i> 5-Minute Fast Handover</div>
+      <div class="trust-item"><i data-lucide="star"></i> Rated 4.9/5 by 1400+ Gamers</div>
+    </div>
+  </div>
+
+  <!-- Featured Accounts Section (Clean Gaming Card Design - No Images) -->
+  <section class="sec" id="accounts">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-label"><i data-lucide="zap" style="width:12px;"></i> Verified Inventory</div>
+        <h2 class="sec-title">Featured Free Fire Accounts</h2>
+        <p class="sec-sub">Verified gaming accounts by GAMING M4K ready for instant handover</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterAccounts('all', this)">All Accounts</button>
+        <button class="filter-tab" onclick="filterAccounts('grand-prize', this)">👑 Grand Prize</button>
+        <button class="filter-tab" onclick="filterAccounts('sale', this)">🔥 On Sale</button>
+        <button class="filter-tab" onclick="filterAccounts('evo', this)">⚡ Max Evo Guns</button>
+      </div>
+
+      <!-- Account Cards Grid -->
+      <div class="acc-grid" id="accountGrid">
+        
+        <!-- Account Card 1 -->
+        <div class="acc-card" data-category="grand-prize evo" onclick="openAccountPage('Level 75 · Cobra MP40 Max + Sakura + Hip Hop', 'Rs. 24,500', '75', '18,500+', '7 Max Evos (MP40 Cobra, AK Dragon, XM8 Destiny)', 'Clean Gmail (Full Ownership Change)', 'UID: 284981***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-prize">👑 Grand Prize</span>
+              <span class="acc-uid-tag">UID: 2849***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #01</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 75 · Cobra MP40 Max + Sakura + Hip Hop</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 75</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 18,500+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 7 (Max)</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Gmail</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 32,000</span>
+                <span class="acc-price">Rs. 24,500</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 75 · Cobra MP40 Max + Sakura + Hip Hop', 'Rs. 24,500', '75', '18,500+', '7 Max Evos (MP40 Cobra, AK Dragon, XM8 Destiny)', 'Clean Gmail (Full Ownership Change)', 'UID: 284981***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Card 2 -->
+        <div class="acc-card" data-category="sale evo" onclick="openAccountPage('Level 69 · Blue Flame Draco AK + Green Criminal', 'Rs. 15,500', '69', '12,200+', '5 Evo Guns (Draco AK, MP5 Divine)', 'Facebook Login (Clean & Safe)', 'UID: 914210***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-sale">🔥 30% OFF</span>
+              <span class="acc-uid-tag">UID: 9142***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #02</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 69 · Blue Flame Draco AK + Green Criminal</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 69</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 12,200+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 5 Evo</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Facebook</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 22,000</span>
+                <span class="acc-price">Rs. 15,500</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 69 · Blue Flame Draco AK + Green Criminal', 'Rs. 15,500', '69', '12,200+', '5 Evo Guns (Draco AK, MP5 Divine)', 'Facebook Login (Clean & Safe)', 'UID: 914210***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Card 3 -->
+        <div class="acc-card" data-category="sale" onclick="openAccountPage('Level 64 · Arctic Blue Bundle + 1,200 Diamonds', 'Rs. 8,900', '64', '8,400+', 'MP40 Flashing Spade + 1200 Diamonds', 'Clean Google Mail', 'UID: 140839***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-available">🟢 Available</span>
+              <span class="acc-uid-tag">UID: 1408***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #03</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 64 · Arctic Blue Bundle + 1,200 Diamonds</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 64</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 8,400+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> MP40 Poker Full</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Google Mail</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 12,500</span>
+                <span class="acc-price">Rs. 8,900</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 64 · Arctic Blue Bundle + 1,200 Diamonds', 'Rs. 8,900', '64', '8,400+', 'MP40 Flashing Spade + 1200 Diamonds', 'Clean Google Mail', 'UID: 140839***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Card 4 -->
+        <div class="acc-card" data-category="grand-prize evo" onclick="openAccountPage('Level 78 · S1-S5 Elite Passes + Red Criminal', 'Rs. 38,000', '78', '24,000+', 'Old Rare OG Account + 9 Max Evo Weapons', 'Clean Google (Safe Transfer)', 'UID: 772184***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-prize">👑 Grand Prize</span>
+              <span class="acc-uid-tag">UID: 7721***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #04</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 78 · S1-S5 Elite Passes + Red Criminal</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 78</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 24,000+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 9 Max</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Google</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 45,000</span>
+                <span class="acc-price">Rs. 38,000</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 78 · S1-S5 Elite Passes + Red Criminal', 'Rs. 38,000', '78', '24,000+', 'Old Rare OG Account + 9 Max Evo Weapons', 'Clean Google (Safe Transfer)', 'UID: 772184***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Card 5 -->
+        <div class="acc-card" data-category="sale" onclick="openAccountPage('Level 58 · Budget Starter + SCAR Megalodon', 'Rs. 4,800', '58', '4,500+', 'SCAR Megalodon Evo + Bundle Set', 'Clean Facebook', 'UID: 531982***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-sale">🔥 Hot Deal</span>
+              <span class="acc-uid-tag">UID: 5319***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #05</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 58 · Budget Starter + SCAR Megalodon</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 58</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 4,500+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> SCAR Lvl 4</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean FB</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 7,500</span>
+                <span class="acc-price">Rs. 4,800</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 58 · Budget Starter + SCAR Megalodon', 'Rs. 4,800', '58', '4,500+', 'SCAR Megalodon Evo + Bundle Set', 'Clean Facebook', 'UID: 531982***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Card 6 -->
+        <div class="acc-card" data-category="evo" onclick="openAccountPage('Level 71 · MP5 Platinum + Season 6 Pass', 'Rs. 13,900', '71', '14,000+', '4 Evo Weapons + Rare Emotes', 'Clean Gmail', 'UID: 881023***')" style="cursor: pointer;">
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-available">🟢 Available</span>
+              <span class="acc-uid-tag">UID: 8810***</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED #06</span>
+            </div>
+          </div>
+          <div class="acc-body">
+            <h3 class="acc-title">Level 71 · MP5 Platinum + Season 6 Pass</h3>
+            <div class="acc-stats-grid">
+              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 71</div>
+              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 14,000+</div>
+              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 4 Evos</div>
+              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Gmail</div>
+            </div>
+            <div class="acc-footer">
+              <div class="acc-price-box">
+                <span class="acc-old-price">Rs. 19,000</span>
+                <span class="acc-price">Rs. 13,900</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 71 · MP5 Platinum + Season 6 Pass', 'Rs. 13,900', '71', '14,000+', '4 Evo Weapons + Rare Emotes', 'Clean Gmail', 'UID: 881023***')">
+                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Diamond Top-Up Section -->
+  <section class="sec sec-alt" id="topup">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-label"><i data-lucide="gem" style="width:12px;"></i> Direct UID Top-Up</div>
+        <h2 class="sec-title">Free Fire Diamonds & Memberships</h2>
+        <p class="sec-sub">Instant automatic reload using only your Player UID. No password needed!</p>
+      </div>
+
+      <div class="pkg-grid">
+        <div class="pkg-card">
+          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
+          <h3 class="pkg-title">100 + 10 Diamonds</h3>
+          <span class="pkg-bonus">+10 Bonus</span>
+          <div class="pkg-price">Rs. 290</div>
+          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20100%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
+            Instant Reload
+          </a>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
+          <h3 class="pkg-title">310 + 31 Diamonds</h3>
+          <span class="pkg-bonus">+10% Extra</span>
+          <div class="pkg-price">Rs. 850</div>
+          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20310%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
+            Instant Reload
+          </a>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
+          <h3 class="pkg-title">520 + 52 Diamonds</h3>
+          <span class="pkg-bonus">Best Value</span>
+          <div class="pkg-price">Rs. 1,400</div>
+          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20520%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
+            Instant Reload
+          </a>
+        </div>
+
+        <div class="pkg-card">
+          <div class="pkg-icon-wrap"><i data-lucide="crown" style="width: 28px; height: 28px;"></i></div>
+          <h3 class="pkg-title">Weekly Pass</h3>
+          <span class="pkg-bonus">450 Diamonds Total</span>
+          <div class="pkg-price">Rs. 580</div>
+          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20Weekly%20Membership%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
+            Instant Reload
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="sec" id="how-it-works">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-label"><i data-lucide="check-circle" style="width:12px;"></i> Safe & Fast</div>
+        <h2 class="sec-title">How To Buy Your Account</h2>
+        <p class="sec-sub">Simple 4-step secure handover process via WhatsApp & Bank Transfer with GAMING M4K</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-badge-num">1</div>
+          <h3 class="step-title">Select Account</h3>
+          <p class="step-desc">Browse through GAMING M4K inventory and pick the account with the level, bundles, and weapons you want.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-num">2</div>
+          <h3 class="step-title">Contact on WhatsApp</h3>
+          <p class="step-desc">Click 'Details' or WhatsApp to contact GAMING M4K admin team directly. We confirm real-time account status.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-num">3</div>
+          <h3 class="step-title">Secure Payment</h3>
+          <p class="step-desc">Pay safely via Commercial Bank, BOC, Sampath Bank, FriMi, or eZ Cash and send your slip.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge-num">4</div>
+          <h3 class="step-title">Instant Handover</h3>
+          <p class="step-desc">Receive full login credentials immediately. We guide you to change security details for 100% safety.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof & Stats -->
+  <section class="sec sec-alt">
+    <div class="container">
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-icon"><i data-lucide="users" style="width: 32px; height: 32px;"></i></div>
+          <div class="proof-num">1,450+</div>
+          <div class="proof-lbl">Happy Gamers</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-icon"><i data-lucide="package-check" style="width: 32px; height: 32px;"></i></div>
+          <div class="proof-num">100%</div>
+          <div class="proof-lbl">Safe Transfer Rate</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-icon"><i data-lucide="star" style="width: 32px; height: 32px;"></i></div>
+          <div class="proof-num">4.9 ★</div>
+          <div class="proof-lbl">Average Rating</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-icon"><i data-lucide="clock" style="width: 32px; height: 32px;"></i></div>
+          <div class="proof-num">5 Mins</div>
+          <div class="proof-lbl">Average Handover Time</div>
+        </div>
+      </div>
+
+      <!-- Call to Action Card -->
+      <div class="cta-banner">
+        <div class="cta-badge"><i data-lucide="zap" style="width:12px;"></i> Best Rates Guaranteed</div>
+        <h2 class="cta-title">Ready To Dominate With GAMING M4K?</h2>
+        <p class="cta-sub">Get your dream Free Fire account today or top up your diamonds safely with fast handover.</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="#accounts" class="btn btn-primary">Browse Accounts</a>
+          <a href="https://wa.me/94770000000?text=Hi%20GAMING%20M4K" target="_blank" class="btn btn-hero-wa">Chat On WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="support">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <img src="logo.jpg" alt="GAMING M4K" style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #38bdf8;">
+            <span class="brand-name">GAMING M4K</span>
+          </div>
+          <p>Sri Lanka's trusted marketplace by GAMING M4K for verified Garena Free Fire accounts, diamonds, and game packages. Secure transactions with full ownership handover.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" title="TikTok"><i data-lucide="video"></i></a>
+            <a href="#" class="social-link" title="YouTube"><i data-lucide="play-circle"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="https://wa.me/94770000000" target="_blank" class="social-link" title="WhatsApp"><i data-lucide="phone"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <a href="#hero">Home</a>
+          <a href="#accounts">Browse Accounts</a>
+          <a href="#topup">Diamond Top-Up</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <a href="https://wa.me/94770000000" target="_blank">WhatsApp Hotline</a>
+          <a href="#" onclick="toggleChat(); return false;">Live Agent Chat</a>
+          <a href="#" onclick="openAuthModal('login'); return false;">Member Login</a>
+          <a href="#">Security Guarantee</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 GAMING M4K Sri Lanka · All rights reserved.</p>
+        <p style="font-size: 0.7rem; color: #64748b; margin-top: 6px;">
+          Disclaimer: Free Fire is a trademark of Garena International. This site is an independent third-party gaming marketplace by GAMING M4K.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Account Details (Clean Banner Design) -->
+  <div class="modal-overlay" id="accountModal" onclick="if(event.target === this) closeModal()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Account Details</h3>
+        <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-banner-box">
+          <span class="badge-tag">GAMING M4K · 100% VERIFIED</span>
+          <h4 id="modalBannerTitle">PREMIUM FREE FIRE ACCOUNT</h4>
+        </div>
+        <div style="background: #f8fafc; border-radius: 12px; padding: 14px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-weight: 600; color: #4b5563;">Level:</span>
+            <span id="modalLevel" style="font-weight: 700; color: #0284c7;">75</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-weight: 600; color: #4b5563;">Likes:</span>
+            <span id="modalLikes" style="font-weight: 700; color: #111;">18,500+</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-weight: 600; color: #4b5563;">Special Items:</span>
+            <span id="modalItems" style="font-weight: 700; color: #0369a1;">7 Max Evo Guns</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="font-weight: 600; color: #4b5563;">Login Type:</span>
+            <span id="modalLogin" style="font-weight: 700; color: #10b981;">Clean Gmail</span>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <div>
+            <div style="font-size: 0.8rem; color: #6b7280;">Total Price:</div>
+            <div id="modalPrice" style="font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 800; color: #0284c7;">Rs. 24,500</div>
+          </div>
+          <a id="modalBuyBtn" href="#" target="_blank" class="btn btn-hero-wa" style="padding: 12px 24px; font-size: 0.95rem;">
+            <i data-lucide="message-circle"></i> Buy Via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Login & Sign Up -->
+  <div class="modal-overlay" id="authModal" onclick="if(event.target === this) closeAuthModal()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <img src="logo.jpg" alt="Logo" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #38bdf8;">
+          <h3 id="authModalTitle">GAMING M4K Member Access</h3>
+        </div>
+        <button class="modal-close" onclick="closeAuthModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Tab Switcher -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+          <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Create Account</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="formLogin" onsubmit="handleAuthSubmit(event, 'login')">
+          <div class="form-group">
+            <label class="form-label">Email or Phone Number</label>
+            <input type="text" class="form-control" id="loginEmail" placeholder="Enter your email or phone" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 0.82rem;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text2);">
+              <input type="checkbox" checked> Remember me
+            </label>
+            <a href="#" style="color: var(--primary); font-weight: 600;" onclick="alert('Please contact WhatsApp support for password recovery.'); return false;">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.95rem;">
+            <i data-lucide="log-in" style="width: 16px;"></i> Log In Now
+          </button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="formSignup" style="display: none;" onsubmit="handleAuthSubmit(event, 'signup')">
+          <div class="form-group">
+            <label class="form-label">Your Name / In-Game Name</label>
+            <input type="text" class="form-control" id="signupName" placeholder="e.g. M4K Sniper" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="signupEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp Number</label>
+            <input type="tel" class="form-control" id="signupPhone" placeholder="077 XXXXXXX" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Create Password</label>
+            <input type="password" class="form-control" id="signupPassword" placeholder="Minimum 6 characters" minlength="6" required>
+          </div>
+          <div style="margin-bottom: 18px; font-size: 0.8rem; color: var(--text2);">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" required checked> I agree to GAMING M4K store terms & safe trade rules
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 0.95rem;">
+            <i data-lucide="user-plus" style="width: 16px;"></i> Register Account
+          </button>
+        </form>
+
+        <!-- Social login divider -->
+        <div class="auth-divider">or continue with</div>
+        <button class="btn-google" onclick="handleGoogleAuth()">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          Google Fast Login
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Live Support Chat Widget -->
+  <div id="chat-btn-wrap">
+    <button id="chat-trigger-btn" onclick="toggleChat()" aria-label="Open Live Chat">
+      <i data-lucide="message-square" style="width: 26px; height: 26px;"></i>
+      <span class="chat-badge-pulse"></span>
+    </button>
+  </div>
+
+  <div id="chat-window">
+    <div class="chat-header">
+      <img src="logo.jpg" alt="Support Avatar" class="chat-avatar-img">
+      <div class="chat-info">
+        <h4>GAMING M4K Support</h4>
+        <p><span class="online-indicator"></span> Online · Replies in seconds</p>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChat()"><i data-lucide="x" style="width: 16px;"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMsgs">
+      <div class="chat-msg msg-support">
+        Hello! 👋 Welcome to GAMING M4K Store. How can we help you today with Free Fire accounts or diamonds?
+      </div>
+    </div>
+    <div class="chat-input-bar">
+      <input type="text" id="chatInput" placeholder="Type a message..." onkeydown="handleChatKey(event)">
+      <button class="chat-send-btn" onclick="sendUserMsg()"><i data-lucide="send" style="width: 16px;"></i></button>
+    </div>
+  </div>
+
+  <!-- Interactive Logic -->
+  <script>
+    // Initialize Lucide Icons
+    function updateIcons() {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      updateIcons();
+      checkSavedUser();
+    });
+
+    // Mobile Navigation Drawer
+    let drawerOpen = false;
+    function toggleDrawer() {
+      drawerOpen = !drawerOpen;
+      document.getElementById('mobileDrawer').classList.toggle('open', drawerOpen);
+      document.getElementById('burgerBtn').classList.toggle('open', drawerOpen);
+      document.body.style.overflow = drawerOpen ? 'hidden' : '';
+    }
+    function closeDrawer() {
+      drawerOpen = false;
+      document.getElementById('mobileDrawer').classList.remove('open');
+      document.getElementById('burgerBtn').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Filter Accounts
+    function filterAccounts(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.acc-card');
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = 'flex';
+        } else {
+          const cats = card.getAttribute('data-category') || '';
+          if (cats.includes(category)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Dedicated Account Page Navigation Handler
+    function openAccountPage(title, price, level, likes, items, login, uid) {
+      const p = new URLSearchParams({
+        title: title || '',
+        price: price || '',
+        level: level || '',
+        likes: likes || '',
+        items: items || '',
+        login: login || '',
+        uid: uid || 'UID: 284981***'
+      });
+      window.location.href = 'account-detail.html?' + p.toString();
+    }
+
+    // Modal Details Handler (Quick Preview)
+    function openModal(title, price, level, likes, items, login) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBannerTitle').textContent = title;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalLevel').textContent = level;
+      document.getElementById('modalLikes').textContent = likes;
+      document.getElementById('modalItems').textContent = items;
+      document.getElementById('modalLogin').textContent = login;
+
+      const whatsappText = encodeURIComponent(`Hi GAMING M4K, I want to purchase this Free Fire Account:\n\n*${title}*\nPrice: ${price}\nLevel: ${level}\nItems: ${items}`);
+      document.getElementById('modalBuyBtn').href = `https://wa.me/94770000000?text=${whatsappText}`;
+
+      document.getElementById('accountModal').classList.add('open');
+      updateIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('accountModal').classList.remove('open');
+    }
+
+    // ─── Login & Sign Up System ───
+    function openAuthModal(tab) {
+      switchAuthTab(tab || 'login');
+      const modal = document.getElementById('authModal');
+      modal.classList.add('open');
+      const card = modal.querySelector('.modal-card');
+      const body = modal.querySelector('.modal-body');
+      if (card) card.scrollTop = 0;
+      if (body) body.scrollTop = 0;
+      updateIcons();
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.remove('open');
+    }
+
+    function switchAuthTab(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('tabLogin').classList.toggle('active', isLogin);
+      document.getElementById('tabSignup').classList.toggle('active', !isLogin);
+      document.getElementById('formLogin').style.display = isLogin ? 'block' : 'none';
+      document.getElementById('formSignup').style.display = isLogin ? 'none' : 'block';
+      const body = document.querySelector('#authModal .modal-body');
+      if (body) body.scrollTop = 0;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastMsg');
+      document.getElementById('toastText').textContent = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    // ─── Real Firebase Authentication ───
+    async function handleAuthSubmit(e, type) {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="pulse-dot"></span> Processing...';
+
+      try {
+        if (type === 'signup') {
+          const name = document.getElementById('signupName').value.trim();
+          const email = document.getElementById('signupEmail').value.trim();
+          const pass = document.getElementById('signupPassword').value;
+
+          const user = await FirebaseAuth.signUp(email, pass, name);
+          showToast(`Welcome to GAMING M4K, ${user.displayName || name}! Account created.`);
+          closeAuthModal();
+        } else {
+          const email = document.getElementById('loginEmail').value.trim();
+          const pass = document.getElementById('loginPassword').value;
+
+          const user = await FirebaseAuth.login(email, pass);
+          showToast(`Welcome back, ${user.displayName || user.email.split('@')[0]}! Logged in.`);
+          closeAuthModal();
+        }
+      } catch (err) {
+        console.error("Firebase auth error:", err);
+        showToast(getFirebaseErrorMessage(err));
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHtml;
+        updateIcons();
+      }
+    }
+
+    async function handleGoogleAuth() {
+      try {
+        const user = await FirebaseAuth.loginWithGoogle();
+        showToast(`Google Login Success: ${user.displayName || user.email}!`);
+        closeAuthModal();
+      } catch (err) {
+        console.error("Google Auth error:", err);
+        showToast(getFirebaseErrorMessage(err));
+      }
+    }
+
+    function setLoggedInState(name) {
+      document.getElementById('userDisplayName').textContent = name;
+      document.getElementById('drawerUserName').textContent = name;
+
+      document.getElementById('navAuthLoggedOut').style.display = 'none';
+      document.getElementById('navAuthLoggedIn').style.display = 'flex';
+
+      document.getElementById('drawerAuthLoggedOut').style.display = 'none';
+      document.getElementById('drawerAuthLoggedIn').style.display = 'block';
+      updateIcons();
+    }
+
+    function setLoggedOutState() {
+      document.getElementById('navAuthLoggedOut').style.display = 'flex';
+      document.getElementById('navAuthLoggedIn').style.display = 'none';
+
+      document.getElementById('drawerAuthLoggedOut').style.display = 'grid';
+      document.getElementById('drawerAuthLoggedIn').style.display = 'none';
+      updateIcons();
+    }
+
+    async function handleLogout() {
+      try {
+        await FirebaseAuth.logout();
+        setLoggedOutState();
+        showToast('Logged out successfully.');
+      } catch (err) {
+        console.error("Logout error:", err);
+        setLoggedOutState();
+      }
+    }
+
+    function checkSavedUser() {
+      if (typeof FirebaseAuth !== 'undefined') {
+        FirebaseAuth.onStateChanged((user) => {
+          if (user) {
+            const displayName = user.displayName || user.email.split('@')[0] || 'Gamer';
+            setLoggedInState(displayName);
+          } else {
+            setLoggedOutState();
+          }
+        });
+      }
+    }
+
+    // Floating Live Chat
+    let isChatOpen = false;
+    function toggleChat() {
+      isChatOpen = !isChatOpen;
+      document.getElementById('chat-window').classList.toggle('open', isChatOpen);
+      if (isChatOpen) {
+        setTimeout(() => document.getElementById('chatInput').focus(), 100);
+      }
+    }
+
+    function handleChatKey(e) {
+      if (e.key === 'Enter') {
+        sendUserMsg();
+      }
+    }
+
+    function sendUserMsg() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const msgs = document.getElementById('chatMsgs');
+
+      // Add user message
+      const userDiv = document.createElement('div');
+      userDiv.className = 'chat-msg msg-user';
+      userDiv.textContent = text;
+      msgs.appendChild(userDiv);
+
+      input.value = '';
+      msgs.scrollTop = msgs.scrollHeight;
+
+      // Simulated auto-agent reply
+      setTimeout(() => {
+        const supportDiv = document.createElement('div');
+        supportDiv.className = 'chat-msg msg-support';
+        supportDiv.textContent = "Thank you for contacting GAMING M4K! 🙏 We are online on WhatsApp (+94 77 000 0000) for instant account handover. Click the WhatsApp button to chat with us!";
+        msgs.appendChild(supportDiv);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 700);
+    }
+  </script>
+</body>
+</html>
