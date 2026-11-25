@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>GAMING M4K | Premium Free Fire Accounts & Diamond Marketplace</title>
+  <title>GAMING M4K | Premium Free Fire Accounts & Memberships</title>
   <meta name="description" content="Buy and sell verified Free Fire accounts with rare bundles, Evo guns, and diamonds in Sri Lanka with GAMING M4K.">
   
   <!-- Fonts -->
@@ -1738,6 +1738,305 @@
       .nav-auth-btns { display: flex; }
       .burger { display: none; }
     }
+    /* ─── Admin Mode Styles ─── */
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff !important;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.35);
+    }
+    .edit-stat-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #3b82f6;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .edit-stat-btn:hover {
+      background: #3b82f6;
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .admin-card-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e2e8f0;
+    }
+    .btn-admin-edit {
+      flex: 1;
+      background: #e0f2fe;
+      color: #0284c7;
+      border: 1px solid #bae6fd;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-admin-edit:hover {
+      background: #0284c7;
+      color: #fff;
+    }
+    .btn-admin-del {
+      flex: 1;
+      background: #fee2e2;
+      color: #ef4444;
+      border: 1px solid #fecaca;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-admin-del:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    /* ─── Memberships Section ─── */
+    .membership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .membership-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .membership-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+      border-color: #38bdf8;
+    }
+    .membership-img-wrap {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .membership-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .membership-badge-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .membership-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .membership-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .membership-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .membership-price {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .membership-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      flex: 1;
+    }
+    .membership-features li {
+      font-size: 0.84rem;
+      color: var(--text2);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .membership-features li i {
+      color: #10b981;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Customer Reviews Section ─── */
+    .reviews-stats-banner {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .rating-summary-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .rating-big-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fbbf24;
+      line-height: 1;
+    }
+    .rating-stars-gold {
+      display: flex;
+      gap: 2px;
+      color: #fbbf24;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .review-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .review-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .review-user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .review-date {
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+    .review-comment {
+      font-size: 0.86rem;
+      color: var(--text2);
+      line-height: 1.45;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .review-verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #059669;
+      background: #d1fae5;
+      padding: 2px 8px;
+      border-radius: 12px;
+      width: fit-content;
+    }
+    .review-form-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .star-select-row {
+      display: flex;
+      gap: 8px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+    .star-select-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: #cbd5e1;
+      transition: color 0.15s;
+    }
+    .star-select-btn.active {
+      color: #fbbf24;
+    }
   </style>
 </head>
 <body>
@@ -1876,15 +2175,24 @@
       <!-- Live Stats Counters -->
       <div class="hero-stats">
         <div class="h-stat">
-          <div class="h-stat-val">52+</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <div class="h-stat-val" id="statInStock">52+</div>
+            <button class="edit-stat-btn admin-only" onclick="openStatEditModal('inStock')" title="Edit In Stock" style="display: none;"><i data-lucide="pencil" style="width:14px;height:14px;"></i></button>
+          </div>
           <div class="h-stat-lbl">In Stock</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-val">1,450+</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <div class="h-stat-val" id="statSold">1,450+</div>
+            <button class="edit-stat-btn admin-only" onclick="openStatEditModal('sold')" title="Edit Sold" style="display: none;"><i data-lucide="pencil" style="width:14px;height:14px;"></i></button>
+          </div>
           <div class="h-stat-lbl">Accounts Sold</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-val">99.9%</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <div class="h-stat-val" id="statHappy">99.9%</div>
+            <button class="edit-stat-btn admin-only" onclick="openStatEditModal('happy')" title="Edit Happy Gamers" style="display: none;"><i data-lucide="pencil" style="width:14px;height:14px;"></i></button>
+          </div>
           <div class="h-stat-lbl">Happy Gamers</div>
         </div>
       </div>
@@ -1920,13 +2228,18 @@
     </div>
   </div>
 
-  <!-- Featured Accounts Section (Clean Gaming Card Design - No Images) -->
+  <!-- Featured Accounts Section (Dynamic Inventory with Admin Controls) -->
   <section class="sec" id="accounts">
     <div class="container">
-      <div class="sec-hdr">
+      <div class="sec-hdr" style="position: relative;">
         <div class="sec-label"><i data-lucide="zap" style="width:12px;"></i> Verified Inventory</div>
         <h2 class="sec-title">Featured Free Fire Accounts</h2>
         <p class="sec-sub">Verified gaming accounts by GAMING M4K ready for instant handover</p>
+        <div class="admin-only" id="adminAccountAction" style="display: none; margin-top: 14px;">
+          <button class="btn btn-primary btn-sm" onclick="openAccountEditModal()" style="font-size: 0.88rem; padding: 8px 16px;">
+            <i data-lucide="plus-circle" style="width: 16px;"></i> Add New Account Layer (Admin)
+          </button>
+        </div>
       </div>
 
       <!-- Category Filter Tabs -->
@@ -1938,258 +2251,26 @@
       </div>
 
       <!-- Account Cards Grid -->
-      <div class="acc-grid" id="accountGrid">
-        
-        <!-- Account Card 1 -->
-        <div class="acc-card" data-category="grand-prize evo" onclick="openAccountPage('Level 75 · Cobra MP40 Max + Sakura + Hip Hop', 'Rs. 24,500', '75', '18,500+', '7 Max Evos (MP40 Cobra, AK Dragon, XM8 Destiny)', 'Clean Gmail (Full Ownership Change)', 'UID: 284981***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-prize">👑 Grand Prize</span>
-              <span class="acc-uid-tag">UID: 2849***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #01</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 75 · Cobra MP40 Max + Sakura + Hip Hop</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 75</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 18,500+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 7 (Max)</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Gmail</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 32,000</span>
-                <span class="acc-price">Rs. 24,500</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 75 · Cobra MP40 Max + Sakura + Hip Hop', 'Rs. 24,500', '75', '18,500+', '7 Max Evos (MP40 Cobra, AK Dragon, XM8 Destiny)', 'Clean Gmail (Full Ownership Change)', 'UID: 284981***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Card 2 -->
-        <div class="acc-card" data-category="sale evo" onclick="openAccountPage('Level 69 · Blue Flame Draco AK + Green Criminal', 'Rs. 15,500', '69', '12,200+', '5 Evo Guns (Draco AK, MP5 Divine)', 'Facebook Login (Clean & Safe)', 'UID: 914210***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-sale">🔥 30% OFF</span>
-              <span class="acc-uid-tag">UID: 9142***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #02</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 69 · Blue Flame Draco AK + Green Criminal</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 69</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 12,200+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 5 Evo</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Facebook</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 22,000</span>
-                <span class="acc-price">Rs. 15,500</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 69 · Blue Flame Draco AK + Green Criminal', 'Rs. 15,500', '69', '12,200+', '5 Evo Guns (Draco AK, MP5 Divine)', 'Facebook Login (Clean & Safe)', 'UID: 914210***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Card 3 -->
-        <div class="acc-card" data-category="sale" onclick="openAccountPage('Level 64 · Arctic Blue Bundle + 1,200 Diamonds', 'Rs. 8,900', '64', '8,400+', 'MP40 Flashing Spade + 1200 Diamonds', 'Clean Google Mail', 'UID: 140839***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-available">🟢 Available</span>
-              <span class="acc-uid-tag">UID: 1408***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #03</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 64 · Arctic Blue Bundle + 1,200 Diamonds</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 64</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 8,400+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> MP40 Poker Full</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Google Mail</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 12,500</span>
-                <span class="acc-price">Rs. 8,900</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 64 · Arctic Blue Bundle + 1,200 Diamonds', 'Rs. 8,900', '64', '8,400+', 'MP40 Flashing Spade + 1200 Diamonds', 'Clean Google Mail', 'UID: 140839***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Card 4 -->
-        <div class="acc-card" data-category="grand-prize evo" onclick="openAccountPage('Level 78 · S1-S5 Elite Passes + Red Criminal', 'Rs. 38,000', '78', '24,000+', 'Old Rare OG Account + 9 Max Evo Weapons', 'Clean Google (Safe Transfer)', 'UID: 772184***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-prize">👑 Grand Prize</span>
-              <span class="acc-uid-tag">UID: 7721***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #04</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 78 · S1-S5 Elite Passes + Red Criminal</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 78</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 24,000+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 9 Max</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Google</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 45,000</span>
-                <span class="acc-price">Rs. 38,000</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 78 · S1-S5 Elite Passes + Red Criminal', 'Rs. 38,000', '78', '24,000+', 'Old Rare OG Account + 9 Max Evo Weapons', 'Clean Google (Safe Transfer)', 'UID: 772184***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Card 5 -->
-        <div class="acc-card" data-category="sale" onclick="openAccountPage('Level 58 · Budget Starter + SCAR Megalodon', 'Rs. 4,800', '58', '4,500+', 'SCAR Megalodon Evo + Bundle Set', 'Clean Facebook', 'UID: 531982***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-sale">🔥 Hot Deal</span>
-              <span class="acc-uid-tag">UID: 5319***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #05</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 58 · Budget Starter + SCAR Megalodon</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 58</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 4,500+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> SCAR Lvl 4</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean FB</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 7,500</span>
-                <span class="acc-price">Rs. 4,800</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 58 · Budget Starter + SCAR Megalodon', 'Rs. 4,800', '58', '4,500+', 'SCAR Megalodon Evo + Bundle Set', 'Clean Facebook', 'UID: 531982***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account Card 6 -->
-        <div class="acc-card" data-category="evo" onclick="openAccountPage('Level 71 · MP5 Platinum + Season 6 Pass', 'Rs. 13,900', '71', '14,000+', '4 Evo Weapons + Rare Emotes', 'Clean Gmail', 'UID: 881023***')" style="cursor: pointer;">
-          <div class="acc-banner-header">
-            <div class="acc-top-meta">
-              <span class="acc-badge badge-available">🟢 Available</span>
-              <span class="acc-uid-tag">UID: 8810***</span>
-            </div>
-            <div class="acc-brand-tag">
-              <i data-lucide="shield-check"></i>
-              <span>GAMING M4K VERIFIED #06</span>
-            </div>
-          </div>
-          <div class="acc-body">
-            <h3 class="acc-title">Level 71 · MP5 Platinum + Season 6 Pass</h3>
-            <div class="acc-stats-grid">
-              <div class="acc-stat-item"><i data-lucide="award"></i> Level: 71</div>
-              <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: 14,000+</div>
-              <div class="acc-stat-item"><i data-lucide="crosshair"></i> Evo Guns: 4 Evos</div>
-              <div class="acc-stat-item"><i data-lucide="shield"></i> Login: Clean Gmail</div>
-            </div>
-            <div class="acc-footer">
-              <div class="acc-price-box">
-                <span class="acc-old-price">Rs. 19,000</span>
-                <span class="acc-price">Rs. 13,900</span>
-              </div>
-              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('Level 71 · MP5 Platinum + Season 6 Pass', 'Rs. 13,900', '71', '14,000+', '4 Evo Weapons + Rare Emotes', 'Clean Gmail', 'UID: 881023***')">
-                <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div class="acc-grid" id="accountGrid"></div>
     </div>
   </section>
 
-  <!-- Diamond Top-Up Section -->
+    <!-- Memberships Section (Weekly Lite, Weekly, Monthly, VIP) -->
   <section class="sec sec-alt" id="topup">
     <div class="container">
-      <div class="sec-hdr">
-        <div class="sec-label"><i data-lucide="gem" style="width:12px;"></i> Direct UID Top-Up</div>
-        <h2 class="sec-title">Free Fire Diamonds & Memberships</h2>
-        <p class="sec-sub">Instant automatic reload using only your Player UID. No password needed!</p>
+      <div class="sec-hdr" style="position: relative;">
+        <div class="sec-label"><i data-lucide="crown" style="width:12px;"></i> Official Memberships</div>
+        <h2 class="sec-title">Free Fire Memberships</h2>
+        <p class="sec-sub">Get daily diamonds, exclusive badges, and special rewards instantly via Player UID.</p>
       </div>
 
-      <div class="pkg-grid">
-        <div class="pkg-card">
-          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
-          <h3 class="pkg-title">100 + 10 Diamonds</h3>
-          <span class="pkg-bonus">+10 Bonus</span>
-          <div class="pkg-price">Rs. 290</div>
-          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20100%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
-            Instant Reload
-          </a>
-        </div>
-
-        <div class="pkg-card">
-          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
-          <h3 class="pkg-title">310 + 31 Diamonds</h3>
-          <span class="pkg-bonus">+10% Extra</span>
-          <div class="pkg-price">Rs. 850</div>
-          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20310%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
-            Instant Reload
-          </a>
-        </div>
-
-        <div class="pkg-card">
-          <div class="pkg-icon-wrap"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
-          <h3 class="pkg-title">520 + 52 Diamonds</h3>
-          <span class="pkg-bonus">Best Value</span>
-          <div class="pkg-price">Rs. 1,400</div>
-          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20520%20Diamonds%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
-            Instant Reload
-          </a>
-        </div>
-
-        <div class="pkg-card">
-          <div class="pkg-icon-wrap"><i data-lucide="crown" style="width: 28px; height: 28px;"></i></div>
-          <h3 class="pkg-title">Weekly Pass</h3>
-          <span class="pkg-bonus">450 Diamonds Total</span>
-          <div class="pkg-price">Rs. 580</div>
-          <a href="https://wa.me/94770000000?text=I%20want%20to%20buy%20Weekly%20Membership%20from%20GAMING%20M4K" target="_blank" class="btn btn-primary btn-sm" style="width: 100%;">
-            Instant Reload
-          </a>
-        </div>
+      <!-- 4 Membership Cards Grid -->
+      <div class="membership-grid" id="membershipGrid">
+        <!-- Rendered dynamically by renderMemberships() -->
       </div>
     </div>
   </section>
-
-  <!-- How It Works Section -->
+<!-- How It Works Section -->
   <section class="sec" id="how-it-works">
     <div class="container">
       <div class="sec-hdr">
@@ -2266,7 +2347,77 @@
   </section>
 
   <!-- Footer -->
-  <footer id="support">
+    <!-- Customer Feedback & Ratings Section -->
+  <section class="sec" id="reviews" style="background: #ffffff; border-top: 1px solid #e2e8f0;">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-label"><i data-lucide="star" style="width:12px;"></i> Customer Satisfaction</div>
+        <h2 class="sec-title">Gamer Feedback & Ratings</h2>
+        <p class="sec-sub">See verified reviews from Sri Lankan Free Fire players who trade safely with GAMING M4K.</p>
+      </div>
+
+      <!-- Rating Overview Banner -->
+      <div class="reviews-stats-banner">
+        <div class="rating-summary-box">
+          <div class="rating-big-num" id="reviewsAvgNum">4.9</div>
+          <div>
+            <div class="rating-stars-gold">
+              <i data-lucide="star" style="fill:#fbbf24;width:18px;height:18px;"></i>
+              <i data-lucide="star" style="fill:#fbbf24;width:18px;height:18px;"></i>
+              <i data-lucide="star" style="fill:#fbbf24;width:18px;height:18px;"></i>
+              <i data-lucide="star" style="fill:#fbbf24;width:18px;height:18px;"></i>
+              <i data-lucide="star" style="fill:#fbbf24;width:18px;height:18px;"></i>
+            </div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;" id="reviewsCountLbl">Based on 1,450+ verified transactions</div>
+          </div>
+        </div>
+        <div style="font-size: 0.9rem; color: #94a3b8; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="shield-check" style="color: #38bdf8;"></i> 100% Genuine Community Feedback
+        </div>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Rendered dynamically by renderReviews() -->
+      </div>
+
+      <!-- Feedback Submission Form -->
+      <div class="review-form-box">
+        <h4 style="font-family:'Rajdhani',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:6px;">
+          Share Your Experience
+        </h4>
+        <p style="font-size:0.86rem; color:var(--text2); margin-bottom:16px;">
+          Purchased an account or membership? Leave a rating and review for the gaming community.
+        </p>
+
+        <form id="reviewSubmitForm" onsubmit="handleReviewSubmit(event)">
+          <div style="margin-bottom: 12px;">
+            <label class="form-label">Your Rating</label>
+            <div class="star-select-row" id="starSelector">
+              <button type="button" class="star-select-btn active" onclick="setSelectRating(1)"><i data-lucide="star" style="fill:#fbbf24;width:24px;height:24px;"></i></button>
+              <button type="button" class="star-select-btn active" onclick="setSelectRating(2)"><i data-lucide="star" style="fill:#fbbf24;width:24px;height:24px;"></i></button>
+              <button type="button" class="star-select-btn active" onclick="setSelectRating(3)"><i data-lucide="star" style="fill:#fbbf24;width:24px;height:24px;"></i></button>
+              <button type="button" class="star-select-btn active" onclick="setSelectRating(4)"><i data-lucide="star" style="fill:#fbbf24;width:24px;height:24px;"></i></button>
+              <button type="button" class="star-select-btn active" onclick="setSelectRating(5)"><i data-lucide="star" style="fill:#fbbf24;width:24px;height:24px;"></i></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your In-Game / Display Name</label>
+            <input type="text" class="form-control" id="reviewAuthor" placeholder="e.g. Kasun FF / M4K Player" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Feedback / Review Message</label>
+            <textarea class="form-control" id="reviewComment" rows="3" placeholder="Fast delivery! Got my account within 5 minutes, 100% recommended..." required style="resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.92rem;">
+            <i data-lucide="send" style="width:16px;"></i> Submit Review
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+<footer id="support">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -2459,7 +2610,7 @@
     </div>
   </div>
 
-  <!-- Interactive Logic -->
+    <!-- Interactive Logic -->
   <script>
     // Initialize Lucide Icons
     function updateIcons() {
@@ -2467,89 +2618,615 @@
         lucide.createIcons();
       }
     }
-    document.addEventListener("DOMContentLoaded", () => {
+
+    // ─── ADMIN SYSTEM CONFIGURATION ───
+    const ADMIN_EMAIL = "uvinduuvidu35@gmail.com";
+
+    function isAdminUser() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('m4k_user_obj') || '{}');
+        const email = (currentUser && currentUser.email) || saved.email || '';
+        return email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase();
+      } catch(e) {
+        return false;
+      }
+    }
+
+    function updateAdminUI() {
+      const isAdm = isAdminUser();
+      const adminElements = document.querySelectorAll('.admin-only');
+      adminElements.forEach(el => {
+        el.style.display = isAdm ? (el.tagName === 'SPAN' || el.tagName === 'BUTTON' ? 'inline-flex' : 'block') : 'none';
+      });
+
+      const navBadge = document.getElementById('navAdminBadge');
+      if (navBadge) navBadge.style.display = isAdm ? 'inline-flex' : 'none';
+
+      const drawerBadge = document.getElementById('drawerAdminBadge');
+      if (drawerBadge) drawerBadge.style.display = isAdm ? 'inline-flex' : 'none';
+
+      const accBtn = document.getElementById('adminAccountAction');
+      if (accBtn) accBtn.style.display = isAdm ? 'block' : 'none';
+
       updateIcons();
-      checkSavedUser();
-    });
-
-    // Mobile Navigation Drawer
-    let drawerOpen = false;
-    function toggleDrawer() {
-      drawerOpen = !drawerOpen;
-      document.getElementById('mobileDrawer').classList.toggle('open', drawerOpen);
-      document.getElementById('burgerBtn').classList.toggle('open', drawerOpen);
-      document.body.style.overflow = drawerOpen ? 'hidden' : '';
-    }
-    function closeDrawer() {
-      drawerOpen = false;
-      document.getElementById('mobileDrawer').classList.remove('open');
-      document.getElementById('burgerBtn').classList.remove('open');
-      document.body.style.overflow = '';
     }
 
-    // Filter Accounts
-    function filterAccounts(category, btn) {
+    // ─── STATS SYSTEM (Editable by Admin) ───
+    const DEFAULT_STATS = { inStock: '52+', sold: '1,450+', happy: '99.9%' };
+
+    function getStats() {
+      try {
+        return JSON.parse(localStorage.getItem('m4k_stats')) || DEFAULT_STATS;
+      } catch(e) {
+        return DEFAULT_STATS;
+      }
+    }
+
+    function renderStats() {
+      const s = getStats();
+      const elStock = document.getElementById('statInStock');
+      const elSold = document.getElementById('statSold');
+      const elHappy = document.getElementById('statHappy');
+
+      if (elStock) elStock.textContent = s.inStock || '52+';
+      if (elSold) elSold.textContent = s.sold || '1,450+';
+      if (elHappy) elHappy.textContent = s.happy || '99.9%';
+    }
+
+    function openStatEditModal(key) {
+      if (!isAdminUser()) {
+        alert("Admin permission required to edit stats.");
+        return;
+      }
+      const s = getStats();
+      document.getElementById('statEditKey').value = key;
+      const lbl = key === 'inStock' ? 'In Stock Counter (e.g. 52+)' :
+                  key === 'sold' ? 'Accounts Sold Counter (e.g. 1,450+)' : 'Happy Gamers Percentage (e.g. 99.9%)';
+      document.getElementById('statEditLabel').textContent = lbl;
+      document.getElementById('statEditValue').value = s[key] || '';
+      document.getElementById('statEditModal').classList.add('open');
+      updateIcons();
+    }
+
+    function closeStatEditModal() {
+      document.getElementById('statEditModal').classList.remove('open');
+    }
+
+    function saveStatEdit(e) {
+      e.preventDefault();
+      if (!isAdminUser()) return;
+      const key = document.getElementById('statEditKey').value;
+      const val = document.getElementById('statEditValue').value.trim();
+      if (!val) return;
+
+      const s = getStats();
+      s[key] = val;
+      localStorage.setItem('m4k_stats', JSON.stringify(s));
+      renderStats();
+      closeStatEditModal();
+      showToast('Counter updated successfully!');
+    }
+
+    // ─── ACCOUNTS INVENTORY SYSTEM (Add / Edit / Delete by Admin) ───
+    const DEFAULT_ACCOUNTS = [
+      {
+        id: 'acc_01',
+        title: 'Level 75 · Cobra MP40 Max + Sakura + Hip Hop',
+        price: 'Rs. 24,500',
+        oldPrice: 'Rs. 32,000',
+        level: '75',
+        likes: '18,500+',
+        items: '7 Max Evos (MP40 Cobra, AK Dragon, XM8 Destiny)',
+        login: 'Clean Gmail (Full Ownership Change)',
+        uid: 'UID: 284981***',
+        badge: '👑 Grand Prize',
+        category: 'grand-prize evo',
+        image: ''
+      },
+      {
+        id: 'acc_02',
+        title: 'Level 72 · Season 2 Elite Pass (Hip Hop) + AK Dragon',
+        price: 'Rs. 18,900',
+        oldPrice: 'Rs. 26,000',
+        level: '72',
+        likes: '14,200+',
+        items: 'Season 2 Hip Hop + Blue Dino Bundle + 4 Evos',
+        login: 'Facebook Login (Full Access Phone/Email)',
+        uid: 'UID: 194821***',
+        badge: '🔥 On Sale',
+        category: 'sale',
+        image: ''
+      },
+      {
+        id: 'acc_03',
+        title: 'Level 69 · 5 Max Evo Guns + Arctic Blue Bundle',
+        price: 'Rs. 15,500',
+        oldPrice: 'Rs. 21,000',
+        level: '69',
+        likes: '11,800+',
+        items: '5 Max Evos (SCAR Megalodon, MP5 Platinum, M1014)',
+        login: 'Clean Gmail (Direct Handover)',
+        uid: 'UID: 338192***',
+        badge: '⚡ Max Evo Guns',
+        category: 'evo sale',
+        image: ''
+      },
+      {
+        id: 'acc_04',
+        title: 'Level 65 · Bunny Warrior + M1887 One Punch Man',
+        price: 'Rs. 9,800',
+        oldPrice: 'Rs. 14,000',
+        level: '65',
+        likes: '8,400+',
+        items: 'Bunny Warrior + OPM M1887 + Poker MP40 Yellow',
+        login: 'VK / Google Login (Instant Security Bind)',
+        uid: 'UID: 441098***',
+        badge: '⭐ Verified Choice',
+        category: 'sale',
+        image: ''
+      }
+    ];
+
+    function getAccounts() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('m4k_accounts'));
+        if (stored && Array.isArray(stored) && stored.length > 0) return stored;
+      } catch(e) {}
+      return DEFAULT_ACCOUNTS;
+    }
+
+    function saveAccounts(arr) {
+      localStorage.setItem('m4k_accounts', JSON.stringify(arr));
+      renderAccounts(currentCategory);
+    }
+
+    let currentCategory = 'all';
+
+    function renderAccounts(filter) {
+      currentCategory = filter || 'all';
+      const container = document.getElementById('accountGrid');
+      if (!container) return;
+
+      const accounts = getAccounts();
+      const isAdm = isAdminUser();
+
+      const filtered = accounts.filter(acc => {
+        if (currentCategory === 'all') return true;
+        return (acc.category || '').toLowerCase().includes(currentCategory.toLowerCase());
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text2);">
+            <i data-lucide="package-open" style="width: 48px; height: 48px; margin: 0 auto 12px; color: var(--text3);"></i>
+            <h3>No accounts found in this category</h3>
+            <p>Check back soon or contact support on WhatsApp for custom orders.</p>
+          </div>
+        `;
+        updateIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(acc => {
+        const imageHeader = acc.image ? `
+          <div style="width:100%; height:150px; overflow:hidden; position:relative;">
+            <img src="${acc.image}" alt="${acc.title}" style="width:100%; height:100%; object-fit:cover;">
+            <span class="acc-badge badge-prize" style="position:absolute; top:10px; right:10px;">${acc.badge || 'Verified'}</span>
+          </div>
+        ` : `
+          <div class="acc-banner-header">
+            <div class="acc-top-meta">
+              <span class="acc-badge badge-prize">${acc.badge || 'Verified'}</span>
+              <span class="acc-uid-tag">${acc.uid || 'UID: Verified'}</span>
+            </div>
+            <div class="acc-brand-tag">
+              <i data-lucide="shield-check"></i>
+              <span>GAMING M4K VERIFIED</span>
+            </div>
+          </div>
+        `;
+
+        const adminActions = isAdm ? `
+          <div class="admin-card-actions">
+            <button class="btn-admin-edit" onclick="event.stopPropagation(); openAccountEditModal('${acc.id}')">
+              <i data-lucide="pencil" style="width:14px;"></i> Edit Layer
+            </button>
+            <button class="btn-admin-del" onclick="event.stopPropagation(); deleteAccount('${acc.id}')">
+              <i data-lucide="trash-2" style="width:14px;"></i> Delete
+            </button>
+          </div>
+        ` : '';
+
+        return `
+          <div class="acc-card" onclick="openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}')" style="cursor: pointer;">
+            ${imageHeader}
+            <div class="acc-body">
+              <h3 class="acc-title">${acc.title}</h3>
+              <div class="acc-stats-grid">
+                <div class="acc-stat-item"><i data-lucide="award"></i> Level: ${acc.level}</div>
+                <div class="acc-stat-item"><i data-lucide="thumbs-up"></i> Likes: ${acc.likes}</div>
+                <div class="acc-stat-item"><i data-lucide="crosshair"></i> ${acc.items}</div>
+                <div class="acc-stat-item"><i data-lucide="shield"></i> Login: ${acc.login}</div>
+              </div>
+              <div class="acc-footer">
+                <div class="acc-price-box">
+                  ${acc.oldPrice ? `<span class="acc-old-price">${acc.oldPrice}</span>` : ''}
+                  <span class="acc-price">${acc.price}</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openAccountPage('${escapeAttr(acc.title)}', '${escapeAttr(acc.price)}', '${escapeAttr(acc.level)}', '${escapeAttr(acc.likes)}', '${escapeAttr(acc.items)}', '${escapeAttr(acc.login)}', '${escapeAttr(acc.uid)}')">
+                  <i data-lucide="shopping-bag" style="width: 14px;"></i> Buy & Details
+                </button>
+              </div>
+              ${adminActions}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateIcons();
+    }
+
+    function escapeAttr(str) {
+      if (!str) return '';
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function filterAccounts(category, tabBtn) {
       document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (tabBtn) tabBtn.classList.add('active');
+      renderAccounts(category);
+    }
 
-      const cards = document.querySelectorAll('.acc-card');
-      cards.forEach(card => {
-        if (category === 'all') {
-          card.style.display = 'flex';
-        } else {
-          const cats = card.getAttribute('data-category') || '';
-          if (cats.includes(category)) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
+    function openAccountEditModal(id) {
+      if (!isAdminUser()) {
+        alert("Admin permission required.");
+        return;
+      }
+      const isNew = !id;
+      document.getElementById('accEditId').value = id || '';
+      document.getElementById('accountEditModalTitle').innerHTML = isNew ?
+        '<i data-lucide="plus-circle" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Add New Account Layer' :
+        '<i data-lucide="pencil" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Edit Account Layer';
+
+      if (isNew) {
+        document.getElementById('accEditTitle').value = '';
+        document.getElementById('accEditPrice').value = 'Rs. ';
+        document.getElementById('accEditOldPrice').value = '';
+        document.getElementById('accEditLevel').value = '';
+        document.getElementById('accEditLikes').value = '';
+        document.getElementById('accEditItems').value = '';
+        document.getElementById('accEditLogin').value = 'Clean Gmail';
+        document.getElementById('accEditUid').value = 'UID: ';
+        document.getElementById('accEditImage').value = '';
+      } else {
+        const accs = getAccounts();
+        const a = accs.find(item => item.id === id);
+        if (a) {
+          document.getElementById('accEditTitle').value = a.title || '';
+          document.getElementById('accEditPrice').value = a.price || '';
+          document.getElementById('accEditOldPrice').value = a.oldPrice || '';
+          document.getElementById('accEditLevel').value = a.level || '';
+          document.getElementById('accEditLikes').value = a.likes || '';
+          document.getElementById('accEditItems').value = a.items || '';
+          document.getElementById('accEditLogin').value = a.login || '';
+          document.getElementById('accEditUid').value = a.uid || '';
+          document.getElementById('accEditImage').value = a.image || '';
+          document.getElementById('accEditBadge').value = a.badge || '👑 Grand Prize';
         }
-      });
-    }
+      }
 
-    // Dedicated Account Page Navigation Handler
-    function openAccountPage(title, price, level, likes, items, login, uid) {
-      const p = new URLSearchParams({
-        title: title || '',
-        price: price || '',
-        level: level || '',
-        likes: likes || '',
-        items: items || '',
-        login: login || '',
-        uid: uid || 'UID: 284981***'
-      });
-      window.location.href = 'account-detail.html?' + p.toString();
-    }
-
-    // Modal Details Handler (Quick Preview)
-    function openModal(title, price, level, likes, items, login) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalBannerTitle').textContent = title;
-      document.getElementById('modalPrice').textContent = price;
-      document.getElementById('modalLevel').textContent = level;
-      document.getElementById('modalLikes').textContent = likes;
-      document.getElementById('modalItems').textContent = items;
-      document.getElementById('modalLogin').textContent = login;
-
-      const whatsappText = encodeURIComponent(`Hi GAMING M4K, I want to purchase this Free Fire Account:\n\n*${title}*\nPrice: ${price}\nLevel: ${level}\nItems: ${items}`);
-      document.getElementById('modalBuyBtn').href = `https://wa.me/94770000000?text=${whatsappText}`;
-
-      document.getElementById('accountModal').classList.add('open');
+      document.getElementById('accountEditModal').classList.add('open');
       updateIcons();
     }
 
-    function closeModal() {
-      document.getElementById('accountModal').classList.remove('open');
+    function closeAccountEditModal() {
+      document.getElementById('accountEditModal').classList.remove('open');
     }
 
-    // ─── Login & Sign Up System ───
+    function saveAccountEdit(e) {
+      e.preventDefault();
+      if (!isAdminUser()) return;
+
+      const id = document.getElementById('accEditId').value;
+      const accs = getAccounts();
+
+      const newObj = {
+        id: id || ('acc_' + Date.now()),
+        title: document.getElementById('accEditTitle').value.trim(),
+        price: document.getElementById('accEditPrice').value.trim(),
+        oldPrice: document.getElementById('accEditOldPrice').value.trim(),
+        level: document.getElementById('accEditLevel').value.trim(),
+        likes: document.getElementById('accEditLikes').value.trim(),
+        items: document.getElementById('accEditItems').value.trim(),
+        login: document.getElementById('accEditLogin').value.trim(),
+        uid: document.getElementById('accEditUid').value.trim(),
+        image: document.getElementById('accEditImage').value.trim(),
+        badge: document.getElementById('accEditBadge').value
+      };
+
+      // Set category tags for filtering
+      let cat = 'sale';
+      if (newObj.badge.includes('Grand Prize')) cat = 'grand-prize evo';
+      else if (newObj.badge.includes('Max Evo')) cat = 'evo';
+      newObj.category = cat;
+
+      if (id) {
+        const idx = accs.findIndex(a => a.id === id);
+        if (idx !== -1) accs[idx] = newObj;
+      } else {
+        accs.unshift(newObj);
+      }
+
+      saveAccounts(accs);
+      closeAccountEditModal();
+      showToast('Game account layer saved successfully!');
+    }
+
+    function deleteAccount(id) {
+      if (!isAdminUser()) return;
+      if (!confirm("Are you sure you want to delete this account layer?")) return;
+
+      let accs = getAccounts();
+      accs = accs.filter(a => a.id !== id);
+      saveAccounts(accs);
+      showToast('Account layer deleted.');
+    }
+
+    // ─── MEMBERSHIPS SYSTEM (4 Levels: Weekly Lite, Weekly, Monthly, VIP) ───
+    const DEFAULT_MEMBERSHIPS = [
+      {
+        id: 'mem_weekly_lite',
+        title: 'Weekly Lite Membership',
+        price: 'Rs. 290',
+        badge: '⚡ Fast Starter',
+        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80',
+        features: [
+          'Daily 20 Free Fire Diamonds (Total 140)',
+          'Special Weekly Lite Badge Tag',
+          'Instant Direct Reload by Player UID',
+          '24/7 WhatsApp Delivery Guarantee'
+        ]
+      },
+      {
+        id: 'mem_weekly',
+        title: 'Weekly Membership',
+        price: 'Rs. 580',
+        badge: '🔥 Most Popular',
+        image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=500&q=80',
+        features: [
+          '450 Diamonds total (100 Instant + 50 Daily)',
+          'Special Weekly Icon & Discount Store Access',
+          'Universal Evo Gun Token Rewards',
+          'Instant Direct Reload by Player UID'
+        ]
+      },
+      {
+        id: 'mem_monthly',
+        title: 'Monthly Membership',
+        price: 'Rs. 2,450',
+        badge: '💎 Best Value',
+        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80',
+        features: [
+          '2,600 Diamonds total (500 Instant + 70 Daily)',
+          'Exclusive Monthly VIP Badge & Icon',
+          '5x Weapon Royale & Diamond Vouchers',
+          'Instant Direct Reload by Player UID'
+        ]
+      },
+      {
+        id: 'mem_vip',
+        title: 'Super VIP Membership',
+        price: 'Rs. 3,100',
+        badge: '👑 Ultimate Pass',
+        image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=500&q=80',
+        features: [
+          'Combo: Weekly + Monthly Active simultaneously',
+          'Super VIP Special Chat Bubble & Badge',
+          'Double Claim Daily Bonus Diamonds',
+          'Priority WhatsApp Handover within 3 Mins'
+        ]
+      }
+    ];
+
+    function getMemberships() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('m4k_memberships'));
+        if (stored && Array.isArray(stored) && stored.length > 0) return stored;
+      } catch(e) {}
+      return DEFAULT_MEMBERSHIPS;
+    }
+
+    function renderMemberships() {
+      const container = document.getElementById('membershipGrid');
+      if (!container) return;
+
+      const mems = getMemberships();
+      const isAdm = isAdminUser();
+
+      container.innerHTML = mems.map(m => {
+        const waMsg = encodeURIComponent(`Hi GAMING M4K, I want to purchase Free Fire *${m.title}* (${m.price}). My UID is: `);
+        const adminBtn = isAdm ? `
+          <button class="btn-admin-edit" style="width: 100%; margin-top: 8px;" onclick="openMembershipEditModal('${m.id}')">
+            <i data-lucide="pencil" style="width: 14px;"></i> Edit Price & Image (Admin)
+          </button>
+        ` : '';
+
+        return `
+          <div class="membership-card">
+            <div class="membership-img-wrap">
+              <img src="${m.image || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80'}" alt="${m.title}">
+              <span class="membership-badge-tag">${m.badge || 'Official'}</span>
+            </div>
+            <div class="membership-body">
+              <h3 class="membership-title">${m.title}</h3>
+              <div class="membership-price-row">
+                <span class="membership-price">${m.price}</span>
+                <span style="font-size:0.8rem; color:var(--text3);">/ Instant UID</span>
+              </div>
+              <ul class="membership-features">
+                ${m.features.map(f => `<li><i data-lucide="check-circle-2"></i> ${f}</li>`).join('')}
+              </ul>
+              <a href="https://wa.me/94770000000?text=${waMsg}" target="_blank" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">
+                <i data-lucide="zap" style="width:14px;"></i> Instant Order (WhatsApp)
+              </a>
+              ${adminBtn}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateIcons();
+    }
+
+    function openMembershipEditModal(id) {
+      if (!isAdminUser()) return;
+      const mems = getMemberships();
+      const m = mems.find(item => item.id === id);
+      if (!m) return;
+
+      document.getElementById('memEditId').value = m.id;
+      document.getElementById('memEditTitle').value = m.title;
+      document.getElementById('memEditPrice').value = m.price;
+      document.getElementById('memEditBadge').value = m.badge || '';
+      document.getElementById('memEditImage').value = m.image || '';
+
+      document.getElementById('membershipEditModal').classList.add('open');
+      updateIcons();
+    }
+
+    function closeMembershipEditModal() {
+      document.getElementById('membershipEditModal').classList.remove('open');
+    }
+
+    function saveMembershipEdit(e) {
+      e.preventDefault();
+      if (!isAdminUser()) return;
+
+      const id = document.getElementById('memEditId').value;
+      const mems = getMemberships();
+      const m = mems.find(item => item.id === id);
+      if (m) {
+        m.price = document.getElementById('memEditPrice').value.trim();
+        m.badge = document.getElementById('memEditBadge').value.trim();
+        m.image = document.getElementById('memEditImage').value.trim();
+        localStorage.setItem('m4k_memberships', JSON.stringify(mems));
+        renderMemberships();
+        closeMembershipEditModal();
+        showToast('Membership details updated!');
+      }
+    }
+
+    // ─── CUSTOMER REVIEWS & FEEDBACK SYSTEM ───
+    const DEFAULT_REVIEWS = [
+      {
+        id: 'rev_1',
+        author: 'Kasun_FF',
+        rating: 5,
+        comment: '100% trusted! Cobra MP40 account eka 5 minutes walin Gmail transfer karala dunna. Fast and safe trade!',
+        date: 'Yesterday'
+      },
+      {
+        id: 'rev_2',
+        author: 'Pathum_Gamer',
+        rating: 5,
+        comment: 'Weekly Membership instant UID reload una. Price eka market ekatath wada sahenna adui. Highly recommended!',
+        date: '3 days ago'
+      },
+      {
+        id: 'rev_3',
+        author: 'Nuwan_Sniper',
+        rating: 5,
+        comment: 'WhatsApp support replies in seconds. Very polite and helpful seller in Sri Lanka.',
+        date: '1 week ago'
+      }
+    ];
+
+    function getReviews() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('m4k_reviews'));
+        if (stored && Array.isArray(stored) && stored.length > 0) return stored;
+      } catch(e) {}
+      return DEFAULT_REVIEWS;
+    }
+
+    function renderReviews() {
+      const container = document.getElementById('reviewsGrid');
+      if (!container) return;
+
+      const revs = getReviews();
+      container.innerHTML = revs.map(r => {
+        let starsHtml = '';
+        for (let i = 0; i < 5; i++) {
+          starsHtml += `<i data-lucide="star" style="width:14px;height:14px;${i < r.rating ? 'fill:#fbbf24;color:#fbbf24;' : 'color:#cbd5e1;'}"></i>`;
+        }
+
+        const initial = (r.author || 'Gamer').charAt(0).toUpperCase();
+
+        return `
+          <div class="review-card">
+            <div>
+              <div class="review-hdr">
+                <div class="review-user-info">
+                  <div class="review-avatar">${initial}</div>
+                  <div>
+                    <div class="review-author">${r.author}</div>
+                    <div class="review-date">${r.date || 'Recent Trade'}</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:2px;">${starsHtml}</div>
+              </div>
+              <p class="review-comment">"${r.comment}"</p>
+            </div>
+            <div class="review-verified-badge">
+              <i data-lucide="check-circle-2" style="width:12px;height:12px;"></i> Verified Free Fire Buyer
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateIcons();
+    }
+
+    let selectedStarRating = 5;
+
+    function setSelectRating(n) {
+      selectedStarRating = n;
+      const btns = document.querySelectorAll('#starSelector .star-select-btn');
+      btns.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx < n);
+      });
+    }
+
+    function handleReviewSubmit(e) {
+      e.preventDefault();
+      const author = document.getElementById('reviewAuthor').value.trim();
+      const comment = document.getElementById('reviewComment').value.trim();
+      if (!author || !comment) return;
+
+      const revs = getReviews();
+      revs.unshift({
+        id: 'rev_' + Date.now(),
+        author: author,
+        rating: selectedStarRating,
+        comment: comment,
+        date: 'Just now'
+      });
+
+      localStorage.setItem('m4k_reviews', JSON.stringify(revs));
+      renderReviews();
+      document.getElementById('reviewSubmitForm').reset();
+      setSelectRating(5);
+      showToast('Thank you! Your review has been submitted.');
+    }
+
+    // ─── LOGIN & SIGN UP MODAL CONTROLS ───
+    let currentUser = null;
+
     function openAuthModal(tab) {
       switchAuthTab(tab || 'login');
       const modal = document.getElementById('authModal');
       modal.classList.add('open');
-      const card = modal.querySelector('.modal-card');
       const body = modal.querySelector('.modal-body');
-      if (card) card.scrollTop = 0;
       if (body) body.scrollTop = 0;
       updateIcons();
     }
@@ -2569,7 +3246,11 @@
     }
 
     function showToast(msg) {
-      const toast = document.getElementById('toastMsg');
+      let toast = document.getElementById('toastMsg');
+      if (!toast) {
+        alert(msg);
+        return;
+      }
       document.getElementById('toastText').textContent = msg;
       toast.style.display = 'flex';
       setTimeout(() => {
@@ -2577,13 +3258,13 @@
       }, 3500);
     }
 
-    // ─── Bulletproof Hybrid Authentication (Firebase + Instant Local Fallback) ───
+    // ─── AUTHENTICATION SUBMISSION ───
     async function handleAuthSubmit(e, type) {
       e.preventDefault();
       const submitBtn = e.target.querySelector('button[type="submit"]');
       const originalHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="pulse-dot"></span> Processing...';
+      submitBtn.innerHTML = 'Processing...';
 
       let userName = 'M4K Gamer';
       let userEmail = '';
@@ -2594,27 +3275,20 @@
           userEmail = document.getElementById('signupEmail').value.trim();
           const pass = document.getElementById('signupPassword').value;
 
-          // Attempt Cloud Firebase Auth first
-          let cloudOk = false;
           try {
             if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.signUp) {
               const u = await FirebaseAuth.signUp(userEmail, pass, userName);
-              if (u) {
-                cloudOk = true;
-                userName = u.displayName || userName;
-              }
+              if (u) userName = u.displayName || userName;
             }
           } catch (fbErr) {
-            console.warn("Cloud Firebase notice (Switching to Local Instant Auth):", fbErr.message || fbErr);
+            console.warn("Firebase notice:", fbErr.message || fbErr);
           }
 
-          // Save locally so it ALWAYS works
-          const registered = JSON.parse(localStorage.getItem('m4k_registered_users') || '[]');
-          registered.push({ name: userName, email: userEmail, date: new Date().toISOString() });
-          localStorage.setItem('m4k_registered_users', JSON.stringify(registered));
-
+          currentUser = { name: userName, email: userEmail, balance: 0, orders: 0 };
+          localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
           setLoggedInState(userName);
-          showToast(සාදරයෙන් පිළිගනිමු,  + userName + ! (Account Ready));
+          updateAdminUI();
+          showToast('Welcome, ' + userName + '! Account ready.');
           closeAuthModal();
 
         } else {
@@ -2622,26 +3296,32 @@
           const pass = document.getElementById('loginPassword').value;
           userName = userEmail.split('@')[0] || 'M4K Gamer';
 
-          // Attempt Cloud Firebase Login first
           try {
             if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.login) {
               const u = await FirebaseAuth.login(userEmail, pass);
               if (u) {
                 userName = u.displayName || userEmail.split('@')[0];
+                userEmail = u.email || userEmail;
               }
             }
           } catch (fbErr) {
-            console.warn("Cloud Firebase login notice (Switching to Local Login):", fbErr.message || fbErr);
+            console.warn("Firebase login notice:", fbErr.message || fbErr);
           }
 
+          currentUser = { name: userName, email: userEmail, balance: 0, orders: 0 };
+          localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
           setLoggedInState(userName);
-          showToast(සාදරයෙන් පිළිගනිමු,  + userName + ! (Logged In));
+          updateAdminUI();
+          if (isAdminUser()) {
+            showToast('👑 Welcome Admin (' + userEmail + ')! Control panel active.');
+          } else {
+            showToast('Welcome back, ' + userName + '!');
+          }
           closeAuthModal();
         }
       } catch (err) {
         console.error("Auth flow notice:", err);
         setLoggedInState(userName);
-        showToast(Logged in successfully as  + userName);
         closeAuthModal();
       } finally {
         submitBtn.disabled = false;
@@ -2650,25 +3330,61 @@
       }
     }
 
+    // ─── GOOGLE AUTH (Bulletproof Error Handling + Admin Detection) ───
     async function handleGoogleAuth() {
-      let gName = 'Google Gamer';
       try {
-        if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.loginWithGoogle) {
-          const u = await FirebaseAuth.loginWithGoogle();
-          if (u) {
-            gName = u.displayName || u.email.split('@')[0];
+        if (typeof FirebaseAuth === 'undefined' || !FirebaseAuth.loginWithGoogle) {
+          alert("Firebase Auth library is still loading. Please check internet connection.");
+          return;
+        }
+
+        const user = await FirebaseAuth.loginWithGoogle();
+        if (user) {
+          currentUser = {
+            name: user.displayName || user.email.split('@')[0],
+            email: user.email,
+            balance: 0,
+            orders: 0
+          };
+
+          localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
+          setLoggedInState(currentUser.name);
+          updateAdminUI();
+          closeAuthModal();
+
+          if (isAdminUser()) {
+            showToast(`👑 Welcome Admin (${currentUser.email})! Full controls unlocked.`);
+          } else {
+            showToast(`Welcome, ${currentUser.name}! (Google Connected)`);
           }
         }
       } catch (err) {
-        console.warn("Google OAuth domain notice (Using instant sign-in):", err.message || err);
-        const promptName = prompt("Enter your Name for Google Fast Login:", "Google Player");
-        if (promptName && promptName.trim()) {
-          gName = promptName.trim();
+        console.error("Google Auth Error:", err);
+        if (err.code === 'auth/unauthorized-domain') {
+          alert("Firebase Error: This domain is not authorized in Firebase Console. Go to Firebase Console -> Authentication -> Settings -> Authorized Domains and add your domain.");
+        } else if (err.code === 'auth/popup-blocked') {
+          alert("Browser Error: Pop-up blocked! Please allow pop-ups for this website in your browser settings.");
+        } else if (err.code === 'auth/operation-not-allowed') {
+          alert("Firebase Error: Google Sign-in method is not enabled in Firebase Console.");
+        } else {
+          // Instant Fallback prompt
+          const promptName = prompt("Enter your Name for Google Fast Login:", "Google Player");
+          if (promptName && promptName.trim()) {
+            const gName = promptName.trim();
+            const gEmail = prompt("Enter your Gmail address:", "player@gmail.com") || "player@gmail.com";
+            currentUser = { name: gName, email: gEmail, balance: 0, orders: 0 };
+            localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
+            setLoggedInState(gName);
+            updateAdminUI();
+            closeAuthModal();
+            if (isAdminUser()) {
+              showToast(`👑 Welcome Admin (${currentUser.email})!`);
+            } else {
+              showToast(`Welcome, ${gName}!`);
+            }
+          }
         }
       }
-      setLoggedInState(gName);
-      showToast(Google Login Success:  + gName + !);
-      closeAuthModal();
     }
 
     function setLoggedInState(name) {
@@ -2688,11 +3404,15 @@
       if (drawerLoggedOut) drawerLoggedOut.style.display = 'none';
       if (drawerLoggedIn) drawerLoggedIn.style.display = 'block';
 
+      updateAdminUI();
       updateIcons();
     }
 
     function setLoggedOutState() {
       localStorage.removeItem('m4k_user');
+      localStorage.removeItem('m4k_user_obj');
+      currentUser = null;
+
       const navLoggedOut = document.getElementById('navAuthLoggedOut');
       const navLoggedIn = document.getElementById('navAuthLoggedIn');
       if (navLoggedOut) navLoggedOut.style.display = 'flex';
@@ -2700,47 +3420,72 @@
 
       const drawerLoggedOut = document.getElementById('drawerAuthLoggedOut');
       const drawerLoggedIn = document.getElementById('drawerAuthLoggedIn');
-      if (drawerLoggedOut) drawerLoggedOut.style.display = 'grid';
+      if (drawerLoggedOut) drawerLoggedOut.style.display = 'flex';
       if (drawerLoggedIn) drawerLoggedIn.style.display = 'none';
 
+      updateAdminUI();
       updateIcons();
     }
 
-    async function handleLogout() {
+    function handleLogout() {
       if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.logout) {
-        try { await FirebaseAuth.logout(); } catch(e) {}
+        FirebaseAuth.logout().catch(() => {});
       }
       setLoggedOutState();
-      showToast('Logged out successfully.');
+      showToast('You have been logged out.');
     }
 
-    function checkSavedUser() {
-      if (typeof FirebaseAuth !== 'undefined') {
-        FirebaseAuth.onStateChanged((user) => {
-          if (user) {
-            const displayName = user.displayName || user.email.split('@')[0] || 'Gamer';
-            setLoggedInState(displayName);
-          } else {
-            setLoggedOutState();
-          }
-        });
-      }
+    // ─── BUY MODAL / ACCOUNT DETAILS DIALOG ───
+    function openAccountPage(title, price, level, likes, items, login, uid) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBannerTitle').textContent = title;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalLevel').textContent = level;
+      document.getElementById('modalLikes').textContent = likes;
+      document.getElementById('modalItems').textContent = items;
+      document.getElementById('modalLogin').textContent = login;
+
+      const whatsappText = encodeURIComponent(`Hi GAMING M4K, I want to purchase this Free Fire Account:\n\n*${title}*\nPrice: ${price}\nLevel: ${level}\nItems: ${items}`);
+      document.getElementById('modalBuyBtn').href = `https://wa.me/94770000000?text=${whatsappText}`;
+
+      document.getElementById('accountModal').classList.add('open');
+      updateIcons();
     }
 
-    // Floating Live Chat
-    let isChatOpen = false;
+    function closeModal() {
+      document.getElementById('accountModal').classList.remove('open');
+    }
+
+    // ─── MOBILE DRAWER & LIVE CHAT ───
+    let drawerOpen = false;
+    function toggleDrawer() {
+      drawerOpen = !drawerOpen;
+      document.getElementById('mobileDrawer').classList.toggle('open', drawerOpen);
+      document.getElementById('burgerBtn').classList.toggle('open', drawerOpen);
+      document.body.style.overflow = drawerOpen ? 'hidden' : '';
+      updateIcons();
+    }
+
+    function closeDrawer() {
+      drawerOpen = false;
+      document.getElementById('mobileDrawer').classList.remove('open');
+      document.getElementById('burgerBtn').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    let chatOpen = false;
     function toggleChat() {
-      isChatOpen = !isChatOpen;
-      document.getElementById('chat-window').classList.toggle('open', isChatOpen);
-      if (isChatOpen) {
-        setTimeout(() => document.getElementById('chatInput').focus(), 100);
+      chatOpen = !chatOpen;
+      const win = document.getElementById('chat-window');
+      win.style.display = chatOpen ? 'flex' : 'none';
+      if (chatOpen) {
+        document.getElementById('chatInput').focus();
       }
+      updateIcons();
     }
 
     function handleChatKey(e) {
-      if (e.key === 'Enter') {
-        sendUserMsg();
-      }
+      if (e.key === 'Enter') sendUserMsg();
     }
 
     function sendUserMsg() {
@@ -2749,25 +3494,60 @@
       if (!text) return;
 
       const msgs = document.getElementById('chatMsgs');
-
-      // Add user message
       const userDiv = document.createElement('div');
       userDiv.className = 'chat-msg msg-user';
       userDiv.textContent = text;
       msgs.appendChild(userDiv);
-
       input.value = '';
       msgs.scrollTop = msgs.scrollHeight;
 
-      // Simulated auto-agent reply
       setTimeout(() => {
         const supportDiv = document.createElement('div');
         supportDiv.className = 'chat-msg msg-support';
-        supportDiv.textContent = "Thank you for contacting GAMING M4K! 🙏 We are online on WhatsApp (+94 77 000 0000) for instant account handover. Click the WhatsApp button to chat with us!";
+        supportDiv.textContent = "Thank you for reaching out! A GAMING M4K agent is active on WhatsApp for instant handover. Please tap the WhatsApp button below or message 0770000000.";
         msgs.appendChild(supportDiv);
         msgs.scrollTop = msgs.scrollHeight;
-      }, 700);
+      }, 900);
     }
+
+    // ─── INITIALIZATION ON PAGE LOAD ───
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Render all dynamic elements
+      renderStats();
+      renderAccounts('all');
+      renderMemberships();
+      renderReviews();
+
+      // 2. Check saved session
+      try {
+        const savedObj = JSON.parse(localStorage.getItem('m4k_user_obj'));
+        if (savedObj && savedObj.name) {
+          currentUser = savedObj;
+          setLoggedInState(savedObj.name);
+        } else {
+          const savedName = localStorage.getItem('m4k_user');
+          if (savedName) setLoggedInState(savedName);
+        }
+      } catch(e) {}
+
+      // 3. Listen to Firebase Auth state
+      if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.onStateChanged) {
+        FirebaseAuth.onStateChanged(user => {
+          if (user) {
+            currentUser = {
+              name: user.displayName || user.email.split('@')[0],
+              email: user.email,
+              balance: 0,
+              orders: 0
+            };
+            localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
+            setLoggedInState(currentUser.name);
+          }
+        });
+      }
+
+      updateIcons();
+    });
   </script>
 </body>
 </html>
