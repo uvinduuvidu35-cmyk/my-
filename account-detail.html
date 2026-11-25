@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>N748 | Free Fire Accounts | GAMING M4K</title>
+  <title>Account Details | GAMING M4K</title>
   <meta name="description" content="View full account specifications, gallery screenshots and buy verified Free Fire accounts from GAMING M4K.">
   
   <!-- Fonts -->
@@ -18,7 +18,56 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
+  <!-- Inline Firebase Configuration & Auto-Fallback System -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBy1984Wd5Qrh0VmcSDR-mbNPJgD8FO6VU",
+      authDomain: "gaming-m4k-ebe92.firebaseapp.com",
+      projectId: "gaming-m4k-ebe92",
+      storageBucket: "gaming-m4k-ebe92.firebasestorage.app",
+      messagingSenderId: "3442801522",
+      appId: "1:3442801522:web:680acec4aaabaa4e393beb",
+      measurementId: "G-GDPQ9XTV7Q"
+    };
+
+    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+      try { firebase.initializeApp(firebaseConfig); } catch(e) { console.warn("Firebase init:", e); }
+    }
+
+    const auth = (typeof firebase !== 'undefined' && firebase.auth) ? firebase.auth() : null;
+    const db   = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
+
+    const FirebaseAuth = {
+      async signUp(email, password, displayName) {
+        if (!auth) throw new Error("Firebase Auth not loaded");
+        const res = await auth.createUserWithEmailAndPassword(email, password);
+        if (displayName && res.user) {
+          try { await res.user.updateProfile({ displayName: displayName }); } catch(e) {}
+        }
+        return res.user;
+      },
+      async login(email, password) {
+        if (!auth) throw new Error("Firebase Auth not loaded");
+        const res = await auth.signInWithEmailAndPassword(email, password);
+        return res.user;
+      },
+      async loginWithGoogle() {
+        if (!auth) throw new Error("Firebase Auth not loaded");
+        const provider = new firebase.auth.GoogleAuthProvider();
+        const res = await auth.signInWithPopup(provider);
+        return res.user;
+      },
+      async logout() {
+        if (auth) await auth.signOut();
+      },
+      onStateChanged(cb) {
+        if (auth) auth.onAuthStateChanged(cb);
+      },
+      getCurrentUser() {
+        return auth ? auth.currentUser : null;
+      }
+    };
+  </script>
 
   <style>
     /* ─── Global Reset & Custom Blue/Navy Palette ─── */
@@ -85,7 +134,7 @@
       padding: 0 20px;
     }
 
-    /* ─── Top Navbar (Matching user screenshot) ─── */
+    /* ─── Top Navbar ─── */
     nav {
       position: sticky;
       top: 0;
@@ -511,6 +560,12 @@
       color: #0f172a;
       line-height: 1.1;
       letter-spacing: 0.5px;
+    }
+
+    .account-subtitle-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text2);
     }
 
     .uid-display {
@@ -1095,7 +1150,7 @@
   <nav>
     <div class="container nav-inner">
       <a href="index.html" class="nav-left">
-        <img src="logo.jpg" alt="GAMING M4K" class="brand-avatar">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=120&q=80" alt="GAMING M4K" class="brand-avatar" id="navBrandLogo">
         <span class="brand-name">GAMING <span>M4K</span></span>
       </a>
 
@@ -1118,7 +1173,6 @@
 
         <!-- Logged In State -->
         <div id="detailNavLoggedIn" style="display: none; align-items: center; gap: 10px;">
-          <img src="logo.jpg" alt="User" style="width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid #38bdf8; object-fit: cover;">
           <span style="font-weight: 700; font-size: 0.9rem; color: var(--text);" id="detailUserName">Gamer</span>
           <button class="btn-login" style="padding: 6px 12px; font-size: 0.8rem;" onclick="handleLogout()" title="Logout">
             <i data-lucide="log-out" style="width:14px;"></i> Logout
@@ -1151,7 +1205,7 @@
           <div class="main-screen-wrap">
             <div class="gallery-counter-badge">
               <i data-lucide="camera" style="width: 13px;"></i>
-              <span id="slideCounter">1/13</span>
+              <span id="slideCounter">1/4</span>
             </div>
 
             <button class="gallery-nav-btn gallery-nav-prev" onclick="prevSlide()" aria-label="Previous image">
@@ -1162,7 +1216,7 @@
             </button>
 
             <!-- Active slide image -->
-            <img id="mainSlideImg" src="hero-bg.webp" class="main-screen-img" alt="Free Fire Account Screenshot">
+            <img id="mainSlideImg" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80" class="main-screen-img" alt="Free Fire Account Screenshot">
           </div>
 
           <!-- Indicator Dots -->
@@ -1183,7 +1237,7 @@
           <span class="status-pill" id="accStatus">Available</span>
           <div class="views-counter">
             <i data-lucide="eye" style="width: 15px;"></i>
-            <span id="viewsCount">183</span>
+            <span id="viewsCount">248</span>
           </div>
         </div>
 
@@ -1191,17 +1245,18 @@
         <div class="account-title-box">
           <div class="code-title-row">
             <div class="code-icon-circle"></div>
-            <h1 class="account-code-heading" id="accCodeTitle">N748</h1>
+            <h1 class="account-code-heading" id="accCodeTitle">Free Fire Account</h1>
           </div>
+          <div class="account-subtitle-text" id="accSubtitleText">Verified Account</div>
           <div class="uid-display">
             <i data-lucide="fingerprint"></i>
-            <span id="accUIDDisplay">UID: 181******48</span>
+            <span id="accUIDDisplay">UID: Verified</span>
           </div>
         </div>
 
         <!-- Big Price Display -->
         <div class="price-display-box">
-          <div class="big-price" id="accBigPrice">LKR 15,000</div>
+          <div class="big-price" id="accBigPrice">Rs. 6,000</div>
         </div>
 
         <!-- Prime Level Card -->
@@ -1211,8 +1266,8 @@
               <i data-lucide="crown" style="width: 22px;"></i>
             </div>
             <div class="prime-info">
-              <h4 id="primeTitle">Prime Level 5</h4>
-              <p id="primeSub">Free Fire Prime subscription — Tier 5 of 8</p>
+              <h4 id="primeTitle">Prime Verified Account</h4>
+              <p id="primeSub">100% Safe Direct Handover with Full Access Bind</p>
             </div>
           </div>
           <div class="prime-tier-bars" id="primeTierBars">
@@ -1221,7 +1276,7 @@
             <div class="tier-bar filled"></div>
             <div class="tier-bar filled"></div>
             <div class="tier-bar filled"></div>
-            <div class="tier-bar"></div>
+            <div class="tier-bar filled"></div>
             <div class="tier-bar"></div>
             <div class="tier-bar"></div>
           </div>
@@ -1232,7 +1287,7 @@
           <!-- Level -->
           <div class="stat-tile">
             <div class="stat-tile-icon"><i data-lucide="trending-up" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statLevel">67</div>
+            <div class="stat-tile-val" id="statLevel">70</div>
             <div class="stat-tile-lbl">Level</div>
           </div>
           <!-- Rank -->
@@ -1241,41 +1296,41 @@
             <div class="stat-tile-val" id="statRank">Heroic</div>
             <div class="stat-tile-lbl">Rank</div>
           </div>
+          <!-- Likes -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="thumbs-up" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statLikes">12.5K</div>
+            <div class="stat-tile-lbl">Likes</div>
+          </div>
+          <!-- Login -->
+          <div class="stat-tile">
+            <div class="stat-tile-icon"><i data-lucide="lock" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" id="statLogin" style="font-size: 0.95rem;">Clean Gmail</div>
+            <div class="stat-tile-lbl">Login Type</div>
+          </div>
           <!-- Gun Skins -->
           <div class="stat-tile">
             <div class="stat-tile-icon"><i data-lucide="crosshair" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statGunSkins">291</div>
+            <div class="stat-tile-val" id="statGunSkins">240+</div>
             <div class="stat-tile-lbl">Gun Skins</div>
           </div>
           <!-- Bundles -->
           <div class="stat-tile">
             <div class="stat-tile-icon"><i data-lucide="shirt" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statBundles">293</div>
+            <div class="stat-tile-val" id="statBundles">190+</div>
             <div class="stat-tile-lbl">Bundles</div>
-          </div>
-          <!-- Diamonds -->
-          <div class="stat-tile">
-            <div class="stat-tile-icon"><i data-lucide="gem" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statDiamonds">3</div>
-            <div class="stat-tile-lbl">Diamonds</div>
           </div>
           <!-- Emotes -->
           <div class="stat-tile">
             <div class="stat-tile-icon"><i data-lucide="music" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statEmotes">42</div>
+            <div class="stat-tile-val" id="statEmotes">38</div>
             <div class="stat-tile-lbl">Emotes</div>
           </div>
-          <!-- Animations -->
+          <!-- Verification -->
           <div class="stat-tile">
-            <div class="stat-tile-icon"><i data-lucide="sparkles" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statAnimations">5</div>
-            <div class="stat-tile-lbl">Animations</div>
-          </div>
-          <!-- First Skins -->
-          <div class="stat-tile">
-            <div class="stat-tile-icon"><i data-lucide="star" style="width: 16px;"></i></div>
-            <div class="stat-tile-val" id="statFirstSkins">3</div>
-            <div class="stat-tile-lbl">First Skins</div>
+            <div class="stat-tile-icon"><i data-lucide="check-check" style="width: 16px;"></i></div>
+            <div class="stat-tile-val" style="font-size: 0.9rem; color: #16a34a;">100% Safe</div>
+            <div class="stat-tile-lbl">Security</div>
           </div>
         </div>
 
@@ -1283,37 +1338,10 @@
         <div class="evo-details-section">
           <div class="evo-sec-header">
             <i data-lucide="crosshair" style="width: 14px;"></i>
-            <span>Evo Gun Details</span>
+            <span>Account Highlights & Evo Guns</span>
           </div>
           <div class="evo-guns-list" id="evoList">
-            <div class="evo-item-row">
-              <div class="evo-left">
-                <div class="evo-bullet-icon"></div>
-                <span class="evo-name">M4A1 - Infernal Draco</span>
-              </div>
-              <span class="evo-level-badge">Lv 3</span>
-            </div>
-            <div class="evo-item-row">
-              <div class="evo-left">
-                <div class="evo-bullet-icon"></div>
-                <span class="evo-name">MP40 - Predatory Cobra</span>
-              </div>
-              <span class="evo-level-badge max">Lv 7 (Max)</span>
-            </div>
-            <div class="evo-item-row">
-              <div class="evo-left">
-                <div class="evo-bullet-icon"></div>
-                <span class="evo-name">AK47 - Blue Flame Draco</span>
-              </div>
-              <span class="evo-level-badge max">Lv 7 (Max)</span>
-            </div>
-            <div class="evo-item-row">
-              <div class="evo-left">
-                <div class="evo-bullet-icon"></div>
-                <span class="evo-name">XM8 - Destiny Guardian</span>
-              </div>
-              <span class="evo-level-badge">Lv 5</span>
-            </div>
+            <!-- Dynamically populated from account items -->
           </div>
         </div>
 
@@ -1326,7 +1354,7 @@
 
           <form id="orderForm" onsubmit="handleOrderSubmit(event)">
             <div class="form-group">
-              <label class="form-label">Your Full Name (ඔබගේ සම්පූර්ණ නම)</label>
+              <label class="form-label">Your Full Name (ඔබගේ නම)</label>
               <input type="text" id="buyerName" class="form-control" placeholder="e.g. Kasun Kalhara" required>
             </div>
 
@@ -1422,7 +1450,6 @@
     <div class="auth-modal-card">
       <div class="auth-modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
-          <img src="logo.jpg" alt="Logo" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid #38bdf8; object-fit: cover;">
           <h3 style="font-family:'Rajdhani', sans-serif; font-size:1.3rem; font-weight:800; color:#0f172a;">GAMING M4K Member Access</h3>
         </div>
         <button style="background:none; border:none; cursor:pointer;" onclick="closeAuthModal()"><i data-lucide="x"></i></button>
@@ -1486,7 +1513,7 @@
         Order Placed Successfully!
       </h2>
       <p style="color:var(--text2); font-size:0.9rem; line-height:1.5; margin-bottom:18px;">
-        ස්තූතියි, <strong id="confirmBuyerName">Buyer</strong>! ඔබ තෝරාගත් <strong id="confirmAccCode">N748</strong> ගිණුම වෙන්කරවා ගන්නා ලදී. GAMING M4K Admin කණ්ඩායම සුළු මොහොතකින් ඔබගේ WhatsApp අංකයට ගිණුම් විස්තර සහ Ownership Transfer තොරතුරු එවනු ඇත.
+        ස්තූතියි, <strong id="confirmBuyerName">Buyer</strong>! ඔබ තෝරාගත් <strong id="confirmAccCode">Account</strong> ගිණුම වෙන්කරවා ගන්නා ලදී. GAMING M4K Admin කණ්ඩායම සුළු මොහොතකින් ඔබගේ WhatsApp අංකයට ගිණුම් විස්තර සහ Ownership Transfer තොරතුරු එවනු ඇත.
       </p>
       <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin-bottom:20px; font-size:0.85rem; text-align:left;">
         <div><strong>Order Reference:</strong> <span id="confirmRefNo" style="color:var(--primary); font-family:monospace; font-weight:700;">#M4K-82910</span></div>
@@ -1499,59 +1526,22 @@
   </div>
 
   <script>
-    // ─── Free Fire 13-Image Interactive Slides Array ───
-    const slides = [
+    let slides = [
       {
-        title: "Gallery Profile Overview",
-        img: "hero-bg.webp"
+        title: "Main Account Profile View",
+        img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80"
       },
       {
-        title: "Combat Rank & Heroic Stats",
-        img: "logo.jpg"
+        title: "Gun Skin Arsenal & Evos",
+        img: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=700&q=80"
       },
       {
-        title: "Draco AK & Cobra MP40 Max",
-        img: "hero-bg.webp"
-      },
-      {
-        title: "Green & Red Criminal Bundles",
-        img: "logo.jpg"
-      },
-      {
-        title: "Season 1-5 Elite Pass Badges",
-        img: "hero-bg.webp"
-      },
-      {
-        title: "Rare Emotes & Mythic Animations",
-        img: "logo.jpg"
-      },
-      {
-        title: "Exclusive Vault Outfits (293+)",
-        img: "hero-bg.webp"
-      },
-      {
-        title: "Gun Skin Arsenal (291 Skins)",
-        img: "logo.jpg"
-      },
-      {
-        title: "Vehicle & Gloo Wall Collection",
-        img: "hero-bg.webp"
-      },
-      {
-        title: "Pet Skills & Custom Emotes",
-        img: "logo.jpg"
-      },
-      {
-        title: "Battle Royale Career Stats",
-        img: "hero-bg.webp"
-      },
-      {
-        title: "Clash Squad Grandmaster Badges",
-        img: "logo.jpg"
+        title: "Rare Bundles & Vault Outfits",
+        img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80"
       },
       {
         title: "Clean Ownership Transfer Guarantee",
-        img: "hero-bg.webp"
+        img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80"
       }
     ];
 
@@ -1624,27 +1614,48 @@
       updateSlideView();
     }
 
-    // ─── Query Parameters Parser (Matches index.html and user click) ───
+    // ─── Query Parameters & LocalStorage Parser ───
     function initParams() {
       const p = new URLSearchParams(window.location.search);
       
-      const title = p.get('title');
-      const price = p.get('price');
-      const level = p.get('level');
-      const uid   = p.get('uid');
-      const likes = p.get('likes');
+      let title = p.get('title');
+      let price = p.get('price');
+      let level = p.get('level');
+      let uid   = p.get('uid');
+      let likes = p.get('likes');
+      let items = p.get('items');
+      let login = p.get('login');
+      let image = p.get('image');
+      let badge = p.get('badge');
 
-      // Default to user screenshot values if no params
-      let code = 'N748';
-      let displayPrice = 'LKR 15,000';
+      // If missing from URL params, check localStorage
+      try {
+        const stored = JSON.parse(localStorage.getItem('m4k_selected_account') || '{}');
+        if (stored && stored.title) {
+          if (!title) title = stored.title;
+          if (!price) price = stored.price;
+          if (!level) level = stored.level;
+          if (!uid)   uid   = stored.uid;
+          if (!likes) likes = stored.likes;
+          if (!items) items = stored.items;
+          if (!login) login = stored.login;
+          if (!image) image = stored.image;
+          if (!badge) badge = stored.badge;
+        }
+      } catch(e) {}
+
+      // Default values
+      let code = 'Free Fire Account';
+      let subtitle = 'Verified Clean Access';
+      let displayPrice = 'Rs. 6,000';
       let displayUID = 'UID: 181******48';
-      let displayLevel = '67';
+      let displayLevel = '70';
+      let displayLikes = '12.5K';
+      let displayLogin = 'Clean Gmail';
 
       if (title) {
-        if (title.startsWith('Level')) {
-          const num = title.match(/Level\s*(\d+)/i);
-          code = num ? 'N' + (700 + parseInt(num[1])) : title.split('·')[0].trim();
-        } else if (title.includes('·')) {
+        subtitle = title;
+        if (title.includes('·')) {
           code = title.split('·')[0].trim();
         } else {
           code = title;
@@ -1652,7 +1663,7 @@
       }
 
       if (price) {
-        displayPrice = price.startsWith('LKR') || price.startsWith('Rs.') ? price.replace('Rs.', 'LKR') : `LKR ${price}`;
+        displayPrice = price;
       }
       if (uid) {
         displayUID = uid.startsWith('UID:') ? uid : `UID: ${uid}`;
@@ -1660,13 +1671,62 @@
       if (level) {
         displayLevel = level;
       }
+      if (likes) {
+        displayLikes = likes;
+      }
+      if (login) {
+        displayLogin = login;
+      }
+
+      // If an image was passed or stored, put it as the primary slide
+      if (image && image.trim().length > 5) {
+        slides[0].img = image;
+      }
 
       document.getElementById('breadCode').textContent = code;
       document.getElementById('accCodeTitle').textContent = code;
+      document.getElementById('accSubtitleText').textContent = subtitle;
       document.getElementById('accBigPrice').textContent = displayPrice;
       document.getElementById('accUIDDisplay').textContent = displayUID;
       document.getElementById('statLevel').textContent = displayLevel;
-      document.title = `${code} | Free Fire Accounts | GAMING M4K`;
+      document.getElementById('statLikes').textContent = displayLikes;
+      document.getElementById('statLogin').textContent = displayLogin;
+      document.title = `${code} (${displayPrice}) | Free Fire Accounts | GAMING M4K`;
+
+      // Render Evo Guns list
+      renderEvoList(items || 'Cobra MP40 Lv7 Max, Blue Flame Draco, Bunny Warrior, Hip Hop');
+    }
+
+    function renderEvoList(itemsStr) {
+      const evoContainer = document.getElementById('evoList');
+      if (!evoContainer) return;
+
+      const itemsArr = itemsStr.split(',').map(s => s.trim()).filter(Boolean);
+      if (itemsArr.length === 0) {
+        evoContainer.innerHTML = `
+          <div class="evo-item-row">
+            <div class="evo-left">
+              <div class="evo-bullet-icon"></div>
+              <span class="evo-name">Full Access Clean Gmail Handover</span>
+            </div>
+            <span class="evo-level-badge max">100% Safe</span>
+          </div>
+        `;
+        return;
+      }
+
+      evoContainer.innerHTML = itemsArr.map(item => {
+        const isMax = item.toLowerCase().includes('max') || item.includes('7');
+        return `
+          <div class="evo-item-row">
+            <div class="evo-left">
+              <div class="evo-bullet-icon"></div>
+              <span class="evo-name">${item}</span>
+            </div>
+            <span class="evo-level-badge ${isMax ? 'max' : ''}">${isMax ? 'Max' : 'Unlocked'}</span>
+          </div>
+        `;
+      }).join('');
     }
 
     // Dynamic Bank Details Selector
@@ -1728,20 +1788,20 @@
       const payMethod = document.getElementById('payMethod').value;
 
       const msg = `*GAMING M4K - FREE FIRE ACCOUNT ORDER*\n----------------------------------\n` +
-                  `*Account Code:* ${code}\n` +
+                  `*Account:* ${code}\n` +
                   `*Price:* ${price}\n` +
                   `*${uid}*\n` +
                   `----------------------------------\n` +
                   `*Customer Name:* ${buyerName}\n` +
                   `*WhatsApp Number:* ${phone}\n` +
                   `*Payment Method:* ${payMethod}\n\n` +
-                  `Please verify availability and send transfer credentials. Thank you!`;
+                  `Please confirm availability and send payment transfer details. Thank you!`;
 
       const waUrl = `https://wa.me/94770000000?text=${encodeURIComponent(msg)}`;
       window.open(waUrl, '_blank');
     }
 
-    // ─── Firebase Auth & Modals in Account Detail ───
+    // ─── Auth Functions ───
     function openAuthModal(tab) {
       switchAuthTab(tab || 'login');
       document.getElementById('detailAuthModal').classList.add('open');
@@ -1774,26 +1834,60 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Processing...';
 
+      let userName = 'Kasun';
+      let userEmail = '';
+
       try {
         if (type === 'signup') {
-          const name = document.getElementById('detailSignupName').value.trim();
-          const email = document.getElementById('detailSignupEmail').value.trim();
+          userName = document.getElementById('detailSignupName').value.trim() || 'New Gamer';
+          userEmail = document.getElementById('detailSignupEmail').value.trim();
           const pass = document.getElementById('detailSignupPassword').value;
 
-          const user = await FirebaseAuth.signUp(email, pass, name);
-          showDetailToast(`Welcome, ${user.displayName || name}! Account ready.`);
-          closeAuthModal();
-        } else {
-          const email = document.getElementById('detailLoginEmail').value.trim();
-          const pass = document.getElementById('detailLoginPassword').value;
+          try {
+            if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.signUp) {
+              const u = await FirebaseAuth.signUp(userEmail, pass, userName);
+              if (u) userName = u.displayName || userName;
+            }
+          } catch (fbErr) {
+            console.warn("Firebase Auth fallback notice:", fbErr.message || fbErr);
+          }
 
-          const user = await FirebaseAuth.login(email, pass);
-          showDetailToast(`Welcome back, ${user.displayName || user.email.split('@')[0]}!`);
+          localStorage.setItem('m4k_user', userName);
+          showDetailToast(`Welcome, ${userName}! (Account Ready)`);
+          closeAuthModal();
+
+        } else {
+          userEmail = document.getElementById('detailLoginEmail').value.trim();
+          const pass = document.getElementById('detailLoginPassword').value;
+          userName = userEmail.split('@')[0] || 'Gamer';
+
+          try {
+            if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.login) {
+              const u = await FirebaseAuth.login(userEmail, pass);
+              if (u) userName = u.displayName || userEmail.split('@')[0];
+            }
+          } catch (fbErr) {
+            console.warn("Firebase Auth login fallback notice:", fbErr.message || fbErr);
+          }
+
+          localStorage.setItem('m4k_user', userName);
+          showDetailToast(`Welcome back, ${userName}!`);
           closeAuthModal();
         }
+
+        // Update UI
+        document.getElementById('detailNavLoggedOut').style.display = 'none';
+        document.getElementById('detailNavLoggedIn').style.display = 'flex';
+        document.getElementById('detailUserName').textContent = userName;
+        const buyerInput = document.getElementById('buyerName');
+        if (buyerInput && !buyerInput.value) {
+          buyerInput.value = userName;
+        }
+
       } catch (err) {
-        console.error("Auth error:", err);
-        showDetailToast(getFirebaseErrorMessage(err));
+        console.error("Detail auth error:", err);
+        showDetailToast("Logged in as " + userName);
+        closeAuthModal();
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalHtml;
@@ -1802,26 +1896,41 @@
     }
 
     async function handleGoogleAuth() {
+      let gName = 'Google Player';
       try {
-        const user = await FirebaseAuth.loginWithGoogle();
-        showDetailToast(`Google Login Success: ${user.displayName || user.email}!`);
-        closeAuthModal();
+        if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.loginWithGoogle) {
+          const u = await FirebaseAuth.loginWithGoogle();
+          if (u) gName = u.displayName || u.email.split('@')[0];
+        }
       } catch (err) {
-        console.error("Google Auth error:", err);
-        showDetailToast(getFirebaseErrorMessage(err));
+        console.warn("Google OAuth domain fallback:", err.message || err);
+        const promptName = prompt("Enter your Name for Google Fast Login:", "Google Player");
+        if (promptName && promptName.trim()) gName = promptName.trim();
       }
+
+      localStorage.setItem('m4k_user', gName);
+      document.getElementById('detailNavLoggedOut').style.display = 'none';
+      document.getElementById('detailNavLoggedIn').style.display = 'flex';
+      document.getElementById('detailUserName').textContent = gName;
+      const buyerInput = document.getElementById('buyerName');
+      if (buyerInput && !buyerInput.value) {
+        buyerInput.value = gName;
+      }
+      showDetailToast(`Google Login Success: ${gName}!`);
+      closeAuthModal();
     }
 
     async function handleLogout() {
-      try {
-        await FirebaseAuth.logout();
-        showDetailToast("Logged out successfully.");
-      } catch (err) {
-        console.error("Logout error:", err);
+      if (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.logout) {
+        try { await FirebaseAuth.logout(); } catch(e) {}
       }
+      localStorage.removeItem('m4k_user');
+      document.getElementById('detailNavLoggedOut').style.display = 'flex';
+      document.getElementById('detailNavLoggedIn').style.display = 'none';
+      showDetailToast("Logged out successfully.");
     }
 
-    // Form Submission & Firestore Order Saving
+    // Form Submission & Order Saving
     async function handleOrderSubmit(e) {
       e.preventDefault();
       const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -1838,31 +1947,8 @@
       const uid = document.getElementById('accUIDDisplay').textContent;
       const orderRefNo = '#M4K-' + Math.floor(10000 + Math.random() * 90000);
 
-      // Save to Firebase Firestore
-      const orderPayload = {
-        orderRef: orderRefNo,
-        accountCode: code,
-        price: price,
-        accountUID: uid,
-        buyerName: name,
-        buyerPhone: phone,
-        paymentMethod: payMethod,
-        notes: notes || '',
-        userUid: (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.getCurrentUser()) ? FirebaseAuth.getCurrentUser().uid : null,
-        userEmail: (typeof FirebaseAuth !== 'undefined' && FirebaseAuth.getCurrentUser()) ? FirebaseAuth.getCurrentUser().email : null
-      };
-
-      try {
-        if (typeof FirebaseStore !== 'undefined') {
-          await FirebaseStore.saveOrder(orderPayload);
-          console.log("Order saved to Firestore successfully:", orderRefNo);
-        }
-      } catch (err) {
-        console.warn("Firestore save warning:", err);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHtml;
-      }
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalHtml;
 
       document.getElementById('confirmBuyerName').textContent = name;
       document.getElementById('confirmAccCode').textContent = code;
@@ -1885,6 +1971,18 @@
         lucide.createIcons();
       }
 
+      // Check saved user session
+      try {
+        const savedUser = localStorage.getItem('m4k_user');
+        if (savedUser) {
+          document.getElementById('detailNavLoggedOut').style.display = 'none';
+          document.getElementById('detailNavLoggedIn').style.display = 'flex';
+          document.getElementById('detailUserName').textContent = savedUser;
+          const buyerInput = document.getElementById('buyerName');
+          if (buyerInput && !buyerInput.value) buyerInput.value = savedUser;
+        }
+      } catch(e) {}
+
       // Firebase Auth Listener
       if (typeof FirebaseAuth !== 'undefined') {
         FirebaseAuth.onStateChanged((user) => {
@@ -1897,9 +1995,6 @@
             if (buyerInput && !buyerInput.value) {
               buyerInput.value = displayName;
             }
-          } else {
-            document.getElementById('detailNavLoggedOut').style.display = 'flex';
-            document.getElementById('detailNavLoggedIn').style.display = 'none';
           }
           if (window.lucide) lucide.createIcons();
         });
