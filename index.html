@@ -2614,7 +2614,7 @@
           localStorage.setItem('m4k_registered_users', JSON.stringify(registered));
 
           setLoggedInState(userName);
-          showToast(සාදරයෙන් පිළිගනිමු,  + userName + ! (Account Ready));
+          showToast('Welcome, ' + userName + '! Account ready.');
           closeAuthModal();
 
         } else {
@@ -2635,13 +2635,13 @@
           }
 
           setLoggedInState(userName);
-          showToast(සාදරයෙන් පිළිගනිමු,  + userName + ! (Logged In));
+          showToast('Welcome, ' + userName + '! Logged in.');
           closeAuthModal();
         }
       } catch (err) {
         console.error("Auth flow notice:", err);
         setLoggedInState(userName);
-        showToast(Logged in successfully as  + userName);
+        showToast('Logged in successfully as ' + userName);
         closeAuthModal();
       } finally {
         submitBtn.disabled = false;
@@ -2667,7 +2667,7 @@
         }
       }
       setLoggedInState(gName);
-      showToast(Google Login Success:  + gName + !);
+      showToast('Google login successful: ' + gName + '!');
       closeAuthModal();
     }
 
