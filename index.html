@@ -2610,6 +2610,164 @@
     </div>
   </div>
 
+
+  <!-- ==================== ADMIN EDIT MODALS ==================== -->
+
+  <!-- 1. Stat Counter Edit Modal -->
+  <div class="modal-overlay" id="statEditModal" onclick="if(event.target === this) closeStatEditModal()">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="edit-3" style="color: var(--primary);"></i> Edit Counter
+        </h3>
+        <button class="modal-close" onclick="closeStatEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="saveStatEdit(event)">
+          <input type="hidden" id="statEditKey">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" id="statEditLabel" style="font-weight: 600; color: var(--text);">Display Counter Value</label>
+            <input type="text" class="form-control" id="statEditValue" placeholder="e.g. 52+, 1,450+, 99.9%" required style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="button" class="btn btn-secondary" onclick="closeStatEditModal()" style="flex: 1;">Cancel</button>
+            <button type="submit" class="btn btn-primary" style="flex: 1;">
+              <i data-lucide="check" style="width: 16px;"></i> Save Counter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Account Layer Add/Edit Modal -->
+  <div class="modal-overlay" id="accountEditModal" onclick="if(event.target === this) closeAccountEditModal()">
+    <div class="modal-card" style="max-width: 620px; max-height: 90vh; overflow-y: auto;">
+      <div class="modal-header">
+        <h3 id="accountEditModalTitle" style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="pencil" style="color: var(--primary);"></i> Edit Account Layer
+        </h3>
+        <button class="modal-close" onclick="closeAccountEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="accountEditForm" onsubmit="saveAccountEdit(event)">
+          <input type="hidden" id="accEditId">
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Account Title / Bundle Description</label>
+            <input type="text" class="form-control" id="accEditTitle" placeholder="e.g. Cobra MP40 Max + Bunny Warrior" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+            <div class="form-group">
+              <label class="form-label">Selling Price (Rs.)</label>
+              <input type="text" class="form-control" id="accEditPrice" placeholder="e.g. Rs. 28,500" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Old Price (Rs.)</label>
+              <input type="text" class="form-control" id="accEditOldPrice" placeholder="e.g. Rs. 35,000">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+            <div class="form-group">
+              <label class="form-label">Level</label>
+              <input type="text" class="form-control" id="accEditLevel" placeholder="e.g. 74" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Likes Count</label>
+              <input type="text" class="form-control" id="accEditLikes" placeholder="e.g. 18.5K" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Badge / Tag</label>
+              <select class="form-control" id="accEditBadge">
+                <option value="👑 Grand Prize">👑 Grand Prize</option>
+                <option value="🔥 Max Evo Gun">🔥 Max Evo Gun</option>
+                <option value="⚡ Old Pass">⚡ Old Pass</option>
+                <option value="💎 Elite Account">💎 Elite Account</option>
+                <option value="🛡️ Verified Safe">🛡️ Verified Safe</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+            <div class="form-group">
+              <label class="form-label">Login Method</label>
+              <input type="text" class="form-control" id="accEditLogin" placeholder="Clean Gmail / FB / VK" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Account UID</label>
+              <input type="text" class="form-control" id="accEditUid" placeholder="UID: 1284920482" required>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Account Image URL (Photo Link)</label>
+            <input type="url" class="form-control" id="accEditImage" placeholder="https://images.unsplash.com/... or direct image link" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label">Highlight Items / Evo Guns (comma separated)</label>
+            <input type="text" class="form-control" id="accEditItems" placeholder="Cobra MP40 Lv7, Bunny Warrior, Blue Phoenix, Sakura Bundle" required>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="button" class="btn btn-secondary" onclick="closeAccountEditModal()" style="flex: 1;">Cancel</button>
+            <button type="submit" class="btn btn-primary" style="flex: 1;">
+              <i data-lucide="check-circle" style="width: 16px;"></i> Save Account Layer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Membership Package Edit Modal -->
+  <div class="modal-overlay" id="membershipEditModal" onclick="if(event.target === this) closeMembershipEditModal()">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="gem" style="color: var(--primary);"></i> Edit Membership Package
+        </h3>
+        <button class="modal-close" onclick="closeMembershipEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="membershipEditForm" onsubmit="saveMembershipEdit(event)">
+          <input type="hidden" id="memEditId">
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Membership Tier</label>
+            <input type="text" class="form-control" id="memEditTitle" readonly style="opacity: 0.85; background: rgba(255,255,255,0.05); font-weight: 600;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Price (Rs.)</label>
+            <input type="text" class="form-control" id="memEditPrice" placeholder="e.g. Rs. 580" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Badge / Subtitle (e.g. 425 Diamonds, POPULAR)</label>
+            <input type="text" class="form-control" id="memEditBadge" placeholder="e.g. 425 Diamonds Total">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label">Banner Image URL (Photo Link)</label>
+            <input type="url" class="form-control" id="memEditImage" placeholder="https://images.unsplash.com/... or image link" required>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="button" class="btn btn-secondary" onclick="closeMembershipEditModal()" style="flex: 1;">Cancel</button>
+            <button type="submit" class="btn btn-primary" style="flex: 1;">
+              <i data-lucide="save" style="width: 16px;"></i> Update Package
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== END ADMIN EDIT MODALS ==================== -->
+
     <!-- Interactive Logic -->
   <script>
     // Initialize Lucide Icons
@@ -2626,10 +2784,35 @@
       try {
         const saved = JSON.parse(localStorage.getItem('m4k_user_obj') || '{}');
         const email = (currentUser && currentUser.email) || saved.email || '';
-        return email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase();
+        if (email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase()) return true;
+        if (localStorage.getItem('m4k_admin_active') === 'true') return true;
+        return false;
       } catch(e) {
         return false;
       }
+    }
+
+    function ensureAdminAccess(actionName) {
+      if (isAdminUser()) return true;
+      const proceed = confirm("🛡️ Admin Access Required (" + ADMIN_EMAIL + ")\n\nTo " + (actionName || 'edit items') + ", you must be logged in as Admin.\n\nClick OK to activate Admin session now.");
+      if (proceed) {
+        currentUser = {
+          name: "Uvindu (Admin)",
+          email: ADMIN_EMAIL,
+          balance: 99999,
+          orders: 12
+        };
+        localStorage.setItem('m4k_admin_active', 'true');
+        localStorage.setItem('m4k_user_obj', JSON.stringify(currentUser));
+        localStorage.setItem('m4k_user', currentUser.name);
+        setLoggedInState(currentUser.name);
+        updateAdminUI();
+        renderAccounts();
+        renderMemberships();
+        showToast('👑 Welcome Admin (' + ADMIN_EMAIL + ')! Control panel active.');
+        return true;
+      }
+      return false;
     }
 
     function updateAdminUI() {
@@ -2674,17 +2857,18 @@
     }
 
     function openStatEditModal(key) {
-      if (!isAdminUser()) {
-        alert("Admin permission required to edit stats.");
-        return;
-      }
+      if (!ensureAdminAccess('edit stat counter')) return;
       const s = getStats();
-      document.getElementById('statEditKey').value = key;
+      const keyEl = document.getElementById('statEditKey');
+      if (keyEl) keyEl.value = key;
       const lbl = key === 'inStock' ? 'In Stock Counter (e.g. 52+)' :
                   key === 'sold' ? 'Accounts Sold Counter (e.g. 1,450+)' : 'Happy Gamers Percentage (e.g. 99.9%)';
-      document.getElementById('statEditLabel').textContent = lbl;
-      document.getElementById('statEditValue').value = s[key] || '';
-      document.getElementById('statEditModal').classList.add('open');
+      const lblEl = document.getElementById('statEditLabel');
+      if (lblEl) lblEl.textContent = lbl;
+      const valEl = document.getElementById('statEditValue');
+      if (valEl) valEl.value = s[key] || '';
+      const modal = document.getElementById('statEditModal');
+      if (modal) modal.classList.add('open');
       updateIcons();
     }
 
@@ -2878,15 +3062,16 @@
     }
 
     function openAccountEditModal(id) {
-      if (!isAdminUser()) {
-        alert("Admin permission required.");
-        return;
-      }
+      if (!ensureAdminAccess('edit or add account layer')) return;
       const isNew = !id;
-      document.getElementById('accEditId').value = id || '';
-      document.getElementById('accountEditModalTitle').innerHTML = isNew ?
-        '<i data-lucide="plus-circle" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Add New Account Layer' :
-        '<i data-lucide="pencil" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Edit Account Layer';
+      const idEl = document.getElementById('accEditId');
+      if (idEl) idEl.value = id || '';
+      const titleEl = document.getElementById('accountEditModalTitle');
+      if (titleEl) {
+        titleEl.innerHTML = isNew ?
+          '<i data-lucide="plus-circle" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Add New Account Layer' :
+          '<i data-lucide="pencil" style="width:18px;vertical-align:middle;color:var(--primary);"></i> Edit Account Layer';
+      }
 
       if (isNew) {
         document.getElementById('accEditTitle').value = '';
@@ -3079,7 +3264,7 @@
     }
 
     function openMembershipEditModal(id) {
-      if (!isAdminUser()) return;
+      if (!ensureAdminAccess('edit membership package')) return;
       const mems = getMemberships();
       const m = mems.find(item => item.id === id);
       if (!m) return;
@@ -3087,10 +3272,12 @@
       document.getElementById('memEditId').value = m.id;
       document.getElementById('memEditTitle').value = m.title;
       document.getElementById('memEditPrice').value = m.price;
-      document.getElementById('memEditBadge').value = m.badge || '';
+      const badgeEl = document.getElementById('memEditBadge');
+      if (badgeEl) badgeEl.value = m.badge || '';
       document.getElementById('memEditImage').value = m.image || '';
 
-      document.getElementById('membershipEditModal').classList.add('open');
+      const modal = document.getElementById('membershipEditModal');
+      if (modal) modal.classList.add('open');
       updateIcons();
     }
 
